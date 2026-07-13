@@ -1,127 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Smart Capital Loans - Fast approval personal, consumer, and business loans with easy documentation">
-    <title>Smart Capital Loans</title>
-    <link rel="stylesheet" href="style.css">
+<title>Smart Capital Loans</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Arial;
+    background:#f4f8ff;
+}
+.header{
+    background:#0047ab;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+.hero{
+    padding:40px;
+    text-align:center;
+}
+button{
+    background:#0047ab;
+    color:white;
+    padding:12px 25px;
+    border:none;
+    border-radius:5px;
+    font-size:18px;
+}
+.form-box{
+    background:white;
+    width:90%;
+    max-width:400px;
+    margin:auto;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px #ccc;
+}
+input,select{
+    width:100%;
+    padding:12px;
+    margin:8px 0;
+}
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:15px;
+}
+</style>
+
 </head>
+
 <body>
-    <header>
-        <h1>Smart Capital Loans</h1>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#services">Services</a>
-            <a href="#apply">Apply</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
 
-    <section class="hero" id="home">
-        <h1>Instant Personal & Consumer Loans</h1>
-        <p>Fast Approval | Easy Documentation | Quick Support</p>
-        <button id="applyBtn">Apply Now</button>
-    </section>
+<div class="header">
+<h1>Smart Capital Loans</h1>
+<p>Instant Personal & Consumer Loans</p>
+</div>
 
-    <section class="cards">
-        <div class="card">
-            <h2>₹10,000 - ₹15 Lakh</h2>
-            <p>Flexible Loan Solutions</p>
-        </div>
-        <div class="card">
-            <h2>Fast Processing</h2>
-            <p>Simple & Secure Process</p>
-        </div>
-        <div class="card">
-            <h2>24/7 Support</h2>
-            <p>Customer Assistance</p>
-        </div>
-    </section>
+<div class="hero">
+<h2>Get Loan Assistance Quickly</h2>
+<p>Easy Documentation | Fast Eligibility Check</p>
+<button>Apply Now</button>
+</div>
 
-    <section id="services">
-        <h2>Our Services</h2>
-        <div class="services-grid">
-            <div class="service">
-                <h3>Personal Loan</h3>
-                <p>Quick personal finance solutions.</p>
-            </div>
-            <div class="service">
-                <h3>Consumer Loan</h3>
-                <p>Purchase electronics and lifestyle products on EMI.</p>
-            </div>
-            <div class="service">
-                <h3>Business Loan</h3>
-                <p>Grow your business with funding support.</p>
-            </div>
-        </div>
-    </section>
 
-    <section id="apply">
-        <h2>Loan Enquiry Form</h2>
-        <form id="enquiryForm">
-            <label for="fullName">Full Name</label>
-            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+<div class="form-box">
 
-            <label for="mobile">Mobile Number</label>
-            <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+<h2>Loan Enquiry</h2>
 
-            <label for="city">City</label>
-            <input type="text" id="city" name="city" placeholder="Your city" required>
+<input type="text" placeholder="Full Name">
 
-            <label for="loanType">Loan Type</label>
-            <select id="loanType" name="loanType" required>
-                <option value="">Select Loan Type</option>
-                <option value="personal">Personal Loan</option>
-                <option value="consumer">Consumer Loan</option>
-                <option value="business">Business Loan</option>
-            </select>
+<input type="number" placeholder="Mobile Number">
 
-            <label for="income">Monthly Income</label>
-            <input type="number" id="income" name="income" placeholder="Your monthly income" min="0" required>
+<input type="text" placeholder="City">
 
-            <button type="submit">Submit Application</button>
-        </form>
-    </section>
+<select>
+<option>Select Loan Type</option>
+<option>Personal Loan</option>
+<option>Consumer Loan</option>
+<option>Business Loan</option>
+</select>
 
-    <section id="calculator">
-        <h2>EMI Calculator</h2>
-        <div class="calculator-container">
-            <label for="amount">Loan Amount (₹)</label>
-            <input type="number" id="amount" placeholder="Enter loan amount" min="10000" max="1500000">
+<input type="number" placeholder="Loan Amount">
 
-            <label for="rate">Interest Rate (%)</label>
-            <input type="number" id="rate" placeholder="Annual interest rate" min="0" step="0.1">
+<button onclick="submitForm()">Submit</button>
 
-            <label for="months">Tenure (Months)</label>
-            <input type="number" id="months" placeholder="Loan tenure" min="1" max="360">
+</div>
 
-            <button id="calculateBtn">Calculate EMI</button>
-            <h3 id="result"></h3>
-        </div>
-    </section>
 
-    <section id="contact">
-        <h2>Contact Us</h2>
-        <p>📍 Hyderabad, Telangana</p>
-        <p>📞 +91 XXXXX XXXXX</p>
-        <p>✉ smartcapital@gmail.com</p>
-    </section>
+<footer>
+<p>© 2026 Smart Capital Loans</p>
+</footer>
 
-    <a class="whatsapp" href="https://wa.me/91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" title="Contact us on WhatsApp">
-        💬 WhatsApp
-    </a>
 
-    <footer>
-        © 2026 Smart Capital Loans. All Rights Reserved.
-    </footer>
+<script>
+function submitForm(){
+alert("Thank you! Our loan team will contact you soon.");
+}
+</script>
 
-    <script src="script.js" defer></script>
 </body>
-</html>document.getElementById('applyBtn').addEventListener('click', () => {
-    document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
-});
-
-document.getElementById('calculateBtn').addEventListener('click', calculate);
-
-document.getElementById('enquiryForm').addEventListener('submit', handleSubmit);
+</html>
