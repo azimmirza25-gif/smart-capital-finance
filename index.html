@@ -1,16 +1,153 @@
-smart-capital-loans/
-├── index.html
-├── about.html
-├── contact.html
-├── privacy.html
-├── terms.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── script.js
-│   └── emi-calculator.js
-├── assets/
-│   ├── logo.png
-│   ├── hero.jpg
-│   └── icons/
-└── README.md
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Capital Loans</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
+body{background:#f5f7fb;color:#333}
+header{background:#0d47a1;color:#fff;padding:15px 8%;display:flex;justify-content:space-between;align-items:center}
+nav a{color:#fff;text-decoration:none;margin-left:20px;font-weight:bold}
+.hero{background:linear-gradient(135deg,#0d47a1,#42a5f5);color:#fff;padding:80px 8%;text-align:center}
+.hero h1{font-size:45px;margin-bottom:15px}
+.hero p{font-size:18px;margin-bottom:25px}
+.btn{background:#ff9800;color:#fff;padding:14px 30px;text-decoration:none;border-radius:30px;font-weight:bold}
+section{padding:60px 8%}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.card{background:#fff;padding:25px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+.card h3{color:#0d47a1;margin-bottom:10px}
+form{background:#fff;padding:25px;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
+input,select{width:100%;padding:12px;margin:10px 0;border:1px solid #ccc;border-radius:6px}
+button{width:100%;padding:14px;background:#0d47a1;color:#fff;border:none;border-radius:6px;font-size:16px;cursor:pointer}
+footer{background:#0d47a1;color:#fff;text-align:center;padding:20px;margin-top:40px}
+.whatsapp{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#25D366;
+color:#fff;
+padding:14px 18px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h2>Smart Capital Loans</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+</header>
+
+<div class="hero">
+
+<h1>Instant Personal & Consumer Loans</h1>
+
+<p>Fast Processing • Easy Documentation • Secure Assistance</p>
+
+<a href="#apply" class="btn">Apply Now</a>
+
+</div>
+
+<section>
+
+<h2 style="text-align:center;margin-bottom:30px;">Our Loan Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Personal Loan</h3>
+<p>Quick personal loan assistance for eligible customers.</p>
+</div>
+
+<div class="card">
+<h3>Consumer Loan</h3>
+<p>Finance mobiles, electronics and home appliances.</p>
+</div>
+
+<div class="card">
+<h3>Business Loan</h3>
+<p>Business funding assistance through lending partners.</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="apply">
+
+<h2 style="text-align:center;margin-bottom:25px;">Loan Enquiry Form</h2>
+
+<form name="loan-enquiry" method="POST" data-netlify="true">
+
+<input type="hidden" name="form-name" value="loan-enquiry">
+
+<input type="text" name="name" placeholder="Full Name" required>
+
+<input type="tel" name="mobile" placeholder="Mobile Number" required>
+
+<input type="text" name="city" placeholder="City" required>
+
+<select name="loanType">
+
+<option>Personal Loan</option>
+
+<option>Consumer Loan</option>
+
+<option>Business Loan</option>
+
+</select>
+
+<input type="number" name="income" placeholder="Monthly Income">
+
+<button type="submit">Submit Application</button>
+
+</form>
+
+</section>
+
+<section>
+
+<h2 style="text-align:center;margin-bottom:20px;">Contact Us</h2>
+
+<div class="card">
+
+<p><strong>WhatsApp:</strong> +91 6309321325</p>
+
+<p><strong>Location:</strong> Hyderabad</p>
+
+<p><strong>Email:</strong> your-email@example.com</p>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>© 2026 Smart Capital Loans</p>
+
+<p style="margin-top:10px;font-size:14px">
+Smart Capital Loans is a loan assistance platform and not a bank or NBFC.
+Loan approval depends on the lending partner's eligibility criteria.
+</p>
+
+</footer>
+
+<a class="whatsapp" href="https://wa.me/916309321325">WhatsApp</a>
+
+</body>
+
+</html>
