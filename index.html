@@ -1,20 +1,26 @@
-<!DOCTYPE html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'>
-<title>Smart Capital Loans</title><style>
-body{font-family:Arial;margin:0;background:#f5f7fb}header,footer{background:#0b4ea2;color:#fff;padding:18px;text-align:center}
-.hero{padding:60px;text-align:center;background:linear-gradient(#1565c0,#42a5f5);color:#fff}
-.btn{display:inline-block;padding:12px 24px;background:#ff9800;color:#fff;text-decoration:none;border-radius:25px}
-.sec{max-width:900px;margin:24px auto;background:#fff;padding:20px;border-radius:10px}
-input,select{width:100%;padding:10px;margin:8px 0}button{padding:12px;width:100%;background:#0b4ea2;color:#fff;border:0}
-.wa{position:fixed;right:20px;bottom:20px;background:#25D366;color:#fff;padding:14px 18px;border-radius:30px;text-decoration:none}
-</style></head><body>
-<header><h2>Smart Capital Loans</h2></header>
-<div class='hero'><h1>Instant Loan Assistance</h1><p>Personal • Consumer • Business Loans</p><a class='btn' href='#form'>Apply Now</a></div>
-<div class='sec'><h3>Why Choose Us?</h3><ul><li>Fast Processing</li><li>Easy Documentation</li><li>Secure Assistance</li></ul></div>
-<div class='sec' id='form'><h3>Loan Enquiry</h3>
-<form onsubmit="alert('Demo form submitted. Connect a backend to receive leads.');return false;">
-<input placeholder='Full Name' required><input placeholder='Mobile Number' required>
-<select><option>Personal Loan</option><option>Consumer Loan</option><option>Business Loan</option></select>
-<button>Submit</button></form></div>
-<footer><p>WhatsApp: 6309321325</p><p><small>Disclaimer: Loan approval depends on lender eligibility. This demo does not guarantee approval.</small></p></footer>
-<a class='wa' href='https://wa.me/916309321325'>WhatsApp</a>
-</body></html>
+<form name="loan-enquiry" method="POST" data-netlify="true">
+
+  <input type="hidden" name="form-name" value="loan-enquiry">
+
+  <label>Full Name</label>
+  <input type="text" name="name" required>
+
+  <label>Mobile Number</label>
+  <input type="tel" name="mobile" required>
+
+  <label>City</label>
+  <input type="text" name="city" required>
+
+  <label>Loan Type</label>
+  <select name="loan_type">
+    <option>Personal Loan</option>
+    <option>Consumer Loan</option>
+    <option>Business Loan</option>
+  </select>
+
+  <label>Monthly Income</label>
+  <input type="number" name="income">
+
+  <button type="submit">Apply Now</button>
+
+</form>
