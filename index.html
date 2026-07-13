@@ -118,4 +118,10 @@
 
     <script src="script.js" defer></script>
 </body>
-</html>
+</html>document.getElementById('applyBtn').addEventListener('click', () => {
+    document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+});
+
+document.getElementById('calculateBtn').addEventListener('click', calculate);
+
+document.getElementById('enquiryForm').addEventListener('submit', handleSubmit);
