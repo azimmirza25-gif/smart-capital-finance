@@ -1,23 +1,231 @@
-function calculateEMI() {
+<!DOCTYPE html>
+<html>
+<head>
+<title>Smart Capital Loans</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+</head>
 
-let P = parseFloat(document.getElementById("loanAmount").value);
-let annualRate = parseFloat(document.getElementById("interestRate").value);
-let years = parseFloat(document.getElementById("loanYears").value);
+<body>
 
-if (isNaN(P) || isNaN(annualRate) || isNaN(years)) {
-    document.getElementById("emiResult").innerHTML =
-        "Please enter all values.";
-    return;
+<header>
+<div class="logo">Smart Capital Loans</div>
+<nav>
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#apply">Apply</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<h1>Instant Personal & Consumer Loans</h1>
+<p>Fast Approval | Easy Documentation | Quick Support</p>
+<button onclick="document.getElementById('apply').scrollIntoView()">Apply Now</button>
+</section>
+
+
+<section class="cards">
+<div>
+<h2>₹10,000 - ₹15 Lakh</h2>
+<p>Flexible Loan Solutions</p>
+</div>
+
+<div>
+<h2>Fast Processing</h2>
+<p>Simple & Secure Process</p>
+</div>
+
+<div>
+<h2>24/7 Support</h2>
+<p>Customer Assistance</p>
+</div>
+</section>
+
+
+<section id="services">
+<h2>Our Services</h2>
+
+<div class="service">
+<h3>Personal Loan</h3>
+<p>Quick personal finance solutions.</p>
+</div>
+
+<div class="service">
+<h3>Consumer Loan</h3>
+<p>Purchase electronics and lifestyle products on EMI.</p>
+</div>
+
+<div class="service">
+<h3>Business Loan</h3>
+<p>Grow your business with funding support.</p>
+</div>
+
+</section>
+
+
+<section id="apply">
+<h2>Loan Enquiry Form</h2>
+
+<form>
+<input type="text" placeholder="Full Name">
+<input type="number" placeholder="Mobile Number">
+<input type="text" placeholder="City">
+
+<select>
+<option>Select Loan Type</option>
+<option>Personal Loan</option>
+<option>Consumer Loan</option>
+<option>Business Loan</option>
+</select>
+
+<input type="number" placeholder="Monthly Income">
+
+<button type="submit">Submit Application</button>
+</form>
+
+</section>
+
+
+<section>
+<h2>EMI Calculator</h2>
+
+<input id="amount" placeholder="Loan Amount">
+<input id="rate" placeholder="Interest Rate">
+<input id="months" placeholder="Tenure Months">
+
+<button onclick="calculate()">Calculate EMI</button>
+
+<h3 id="result"></h3>
+
+</section>
+
+
+<section id="contact">
+<h2>Contact Us</h2>
+<p>📍 Hyderabad, Telangana</p>
+<p>📞 +91 XXXXX XXXXX</p>
+<p>✉ smartcapital@gmail.com</p>
+
+</section>
+
+
+<a class="whatsapp" href="https://wa.me/91XXXXXXXXXX">
+WhatsApp
+</a>
+
+
+<footer>
+© 2026 Smart Capital Loans. All Rights Reserved.
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
+body{
+margin:0;
+font-family:Arial;
+background:#f5f9ff;
+color:#222;
 }
 
-let R = annualRate / 12 / 100;
-let N = years * 12;
+header{
+background:#004aad;
+color:white;
+padding:20px;
+display:flex;
+justify-content:space-between;
+}
 
-let EMI =
-    (P * R * Math.pow(1 + R, N)) /
-    (Math.pow(1 + R, N) - 1);
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+}
 
-document.getElementById("emiResult").innerHTML =
-    "Monthly EMI: ₹ " + EMI.toFixed(2);
+.hero{
+background:linear-gradient(120deg,#004aad,#00a8ff);
+color:white;
+padding:80px 20px;
+text-align:center;
+}
+
+button{
+background:#004aad;
+color:white;
+border:none;
+padding:15px 25px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.cards{
+display:flex;
+gap:20px;
+padding:30px;
+justify-content:center;
+}
+
+.cards div,.service{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 5px 20px #ddd;
+}
+
+section{
+padding:40px;
+text-align:center;
+}
+
+form{
+max-width:400px;
+margin:auto;
+}
+
+input,select{
+width:90%;
+padding:15px;
+margin:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+background:green;
+color:white;
+padding:15px;
+border-radius:50px;
+text-decoration:none;
+}
+
+footer{
+background:#004aad;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+
+@media(max-width:700px){
+.cards{
+display:block;
+}
+}
+function calculate(){
+
+let P=document.getElementById("amount").value;
+let r=document.getElementById("rate").value/12/100;
+let n=document.getElementById("months").value;
+
+let emi=P*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+
+document.getElementById("result").innerHTML=
+"Your EMI: ₹ "+Math.round(emi);
 
 }
