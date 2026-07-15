@@ -1,0 +1,223 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f7fb;
+    color:#333;
+}
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#003366;
+    color:#fff;
+    padding:15px 8%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo h2{
+    font-size:28px;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:20px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#ffd700;
+}
+
+.hero{
+    background:linear-gradient(rgba(0,51,102,.8),rgba(0,51,102,.8)),
+    url("https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1400&q=80");
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    text-align:center;
+    padding:120px 20px;
+}
+
+.hero h1{
+    font-size:45px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:20px;
+    margin-bottom:25px;
+}
+
+.btn{
+    background:#ff9800;
+    color:#fff;
+    text-decoration:none;
+    padding:14px 28px;
+    border-radius:6px;
+    font-weight:bold;
+}
+
+section{
+    padding:60px 8%;
+}
+
+section h2{
+    text-align:center;
+    margin-bottom:30px;
+    color:#003366;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+form{
+    max-width:600px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+}
+
+form input,
+form select,
+form textarea{
+    padding:14px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:16px;
+}
+
+form textarea{
+    height:120px;
+}
+
+button{
+    background:#003366;
+    color:#fff;
+    border:none;
+    padding:15px;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+button:hover{
+    background:#00509e;
+}
+
+#emi{
+    text-align:center;
+}
+
+#emi input{
+    width:250px;
+    padding:12px;
+    margin:10px;
+}
+
+#result{
+    margin-top:20px;
+    color:#003366;
+}
+
+#contact{
+    text-align:center;
+}
+
+#contact a{
+    text-decoration:none;
+    color:#003366;
+    font-weight:bold;
+}
+
+footer{
+    background:#003366;
+    color:#fff;
+    text-align:center;
+    padding:20px;
+}
+
+footer a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 8px;
+}
+
+.whatsapp,
+.call{
+    position:fixed;
+    right:20px;
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:24px;
+    text-decoration:none;
+    z-index:999;
+}
+
+.whatsapp{
+    bottom:90px;
+    background:#25D366;
+}
+
+.call{
+    bottom:20px;
+    background:#0d6efd;
+}
+
+@media(max-width:768px){
+
+header{
+    flex-direction:column;
+}
+
+nav{
+    margin-top:10px;
+}
+
+nav a{
+    display:block;
+    margin:8px 0;
+}
+
+.hero h1{
+    font-size:32px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+#emi input{
+    width:100%;
+}
+}
