@@ -111,4 +111,10 @@ function checkEligibility() {
         "Estimated Loan Amount: <b>₹" +
         maxLoan.toLocaleString("en-IN") +
         "</b>";
+}function openMenu(){
+document.getElementById("drawer").style.width="280px";
+}
+
+function closeMenu(){
+document.getElementById("drawer").style.width="0";
 }
