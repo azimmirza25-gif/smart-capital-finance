@@ -3,87 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Capital Finance - EMI Calculator</title>
+<title>Smart Capital Finance</title>
 
-<style>
-body{
-    font-family:Arial,sans-serif;
-    background:#f4f4f4;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-}
-.container{
-    background:#fff;
-    padding:20px;
-    border-radius:10px;
-    width:320px;
-    box-shadow:0 0 10px rgba(0,0,0,.2);
-}
-h2{
-    text-align:center;
-}
-input,button{
-    width:100%;
-    padding:10px;
-    margin-top:10px;
-}
-button{
-    background:#007bff;
-    color:#fff;
-    border:none;
-    cursor:pointer;
-}
-button:hover{
-    background:#0056b3;
-}
-#result{
-    margin-top:15px;
-    font-size:18px;
-    font-weight:bold;
-    text-align:center;
-}
-</style>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 </head>
+
 <body>
 
-<div class="container">
-<h2>EMI Calculator</h2>
+<header>
 
-<input type="number" id="loan" placeholder="Loan Amount">
-<input type="number" id="rate" placeholder="Interest Rate (%)">
-<input type="number" id="years" placeholder="Loan Tenure (Years)">
-
-<button onclick="calculateEMI()">Calculate EMI</button>
-
-<div id="result"></div>
+<div class="logo">
+<h2>Smart Capital Finance</h2>
 </div>
 
-<script>
-function calculateEMI(){
+<nav>
 
-let P = parseFloat(document.getElementById("loan").value);
-let annualRate = parseFloat(document.getElementById("rate").value);
-let years = parseFloat(document.getElementById("years").value);
+<a href="#home">Home</a>
 
-if(isNaN(P) || isNaN(annualRate) || isNaN(years)){
-    document.getElementById("result").innerHTML="Please enter all values.";
-    return;
-}
+<a href="#services">Loans</a>
 
-let R = annualRate / 12 / 100;
-let N = years * 12;
+<a href="#emi">EMI Calculator</a>
 
-let EMI = (P * R * Math.pow(1 + R, N)) /
-          (Math.pow(1 + R, N) - 1);
+<a href="#contact">Contact</a>
 
-document.getElementById("result").innerHTML =
-"Monthly EMI: ₹" + EMI.toFixed(2);
+</nav>
 
-}
-</script>
+</header>
+
+<section class="hero" id="home">
+
+<h1>Fast Personal Loan upto ₹50 Lakhs</h1>
+
+<p>Instant Approval | Low Interest | Minimum Documentation</p>
+
+<a href="#form" class="btn">
+Apply Now
+</a>
+
+</section>
+
+<section id="services">
+
+<h2>Our Loan Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Personal Loan</h3>
+<p>Up to ₹50 Lakhs</p>
+</div>
+
+<div class="card">
+<h3>Business Loan</h3>
+<p>Up to ₹2 Crore</p>
+</div>
+
+<div class="card">
+<h3>Home Loan</h3>
+<p>Lowest Interest</p>
+</div>
+
+<div class="card">
+<h3>Loan Against Property</h3>
+<p>Easy Approval</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="form">
+
+<h2>Loan Enquiry Form</h2>
+
+<form>
+
+<input type="text"
+placeholder="Full Name"
+required>
+
+<input type="tel"
+placeholder="Mobile Number"
+required>
+
+<input type="number"
+placeholder="Loan Amount"
+required>
+
+<select>
+
+<option>Personal Loan</option>
+
+<option>Business Loan</option>
+
+<option>Home Loan</option>
+
+<option>LAP</option>
+
+</select>
+
+<textarea
+placeholder="Your Message">
+</textarea>
+
+<button type="submit">
+Submit
+</button>
+
+</form>
+
+</section>
+
+<section id="emi">
+
+<h2>EMI Calculator</h2>
+
+<input type="number"
+id="loan"
+placeholder="Loan Amount">
+
+<input type="number"
+id="rate"
+placeholder="Interest Rate">
+
+<input type="number"
+id="year"
+placeholder="Tenure (Years)">
+
+<button onclick="calculateEMI()">
+Calculate EMI
+</button>
+
+<h3 id="result"></h3>
+
+</section>
+
+<section id="contact">
+
+<h2>Contact Us</h2>
+
+<p>
+
+Phone:
+<a href="tel:6309321325">
+6309321325
+</a>
+
+</p>
+
+<p>
+
+WhatsApp:
+
+<a href="https://wa.me/916309321325">
+
+Chat Now
+
+</a>
+
+</p>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 Smart Capital Finance
+
+</p>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+|
+
+<a href="terms.html">
+
+Terms & Conditions
+
+</a>
+
+</footer>
+
+<a class="whatsapp"
+
+href="https://wa.me/916309321325">
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+<a class="call"
+
+href="tel:6309321325">
+
+<i class="fas fa-phone"></i>
+
+</a>
+
+<script src="script.js"></script>
 
 </body>
 </html>
