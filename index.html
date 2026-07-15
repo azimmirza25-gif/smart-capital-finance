@@ -3,134 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Capital Finance</title>
-<link rel="stylesheet" href="style.css">
+<title>Smart Capital Loans</title>
+
+<link rel="stylesheet" href="css/style.css">
+
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
 
 <header>
-<div class="menu-btn" onclick="openDrawer()">☰</div>
-<div id="overlay" class="overlay" onclick="closeDrawer()"></div>
-<div id="drawer" class="drawer">
-    <nav>
-        <a href="#home">🏠 Home</a>
-        <a href="#services">💰 Loan Services</a>
-        <a href="#eligibility">✅ Eligibility</a>
-        <a href="#emi">🧮 EMI Calculator</a>
-        <a href="#form">📝 Apply Now</a>
-        <a href="#contact">📞 Contact Us</a>
-        <a href="privacy.html">🔒 Privacy Policy</a>
-        <a href="terms.html">📄 Terms & Conditions</a>
-    </nav>
+
+<div class="logo">
+<h2>🏦 Smart Capital Loans</h2>
 </div>
 
 <nav>
-    <a href="#home">🏠 Home</a>
-    <a href="#services">💰 Loan Services</a>
-    <a href="#eligibility">✅ Eligibility</a>
-    <a href="#emi">🧮 EMI Calculator</a>
-    <a href="#form">📝 Apply Now</a>
-    <a href="#contact">📞 Contact Us</a>
-    <a href="privacy.html">🔒 Privacy Policy</a>
-    <a href="terms.html">📄 Terms & Conditions</a>
+
+<a href="index.html">Home</a>
+
+<a href="about.html">About</a>
+
+<a href="services.html">Services</a>
+
+<a href="apply.html">Apply</a>
+
+<a href="emi.html">EMI</a>
+
+<a href="contact.html">Contact</a>
+
 </nav>
+
 </header>
 
-<section class="hero" id="home">
-<h1>Instant Personal Loan Upto 5 Lakhs</h1>
-<p>Instant Approval | No Salary Slip No Bank Statement | Minimum Documentation</p>
-<a href="#form" class="btn">Apply Now</a>
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Instant Personal & Consumer Loans</h1>
+
+<p>
+Fast Approval • Easy EMI • Minimum Documentation
+</p>
+
+<a href="apply.html" class="btn">
+Apply Now
+</a>
+
+</div>
+
 </section>
 
-<section id="services">
-<h2>Our Loan Services</h2>
-<div class="cards">
+<section class="features">
+
 <div class="card">
-<h3>Personal Loan</h3>
-<p>Up to ₹5 Lakhs</p>
+<i class="fa-solid fa-bolt"></i>
+<h3>Instant Approval</h3>
+<p>Approval within minutes.</p>
 </div>
+
 <div class="card">
-<h3>Bajaj Consumer Loan</h3>
-<p>Easy Approval</p>
+<i class="fa-solid fa-file"></i>
+<h3>Easy Documents</h3>
+<p>Simple paper work.</p>
 </div>
+
 <div class="card">
-<h3>Home Loan</h3>
-<p>Lowest Interest</p>
+<i class="fa-solid fa-money-bill"></i>
+<h3>Affordable EMI</h3>
+<p>Flexible repayment plans.</p>
 </div>
-<div class="card">
-<h3>Loan Against Property</h3>
-<p>Easy Approval</p>
-</div>
-</div>
-</section>
 
-<section id="eligibility">
-<h2>Check Your Loan Eligibility</h2>
-<form id="eligibilityForm">
-<input type="number" id="age" placeholder="Age" required>
-<input type="number" id="income" placeholder="Monthly Income" required>
-<input type="number" id="emi" placeholder="Existing EMI" required>
-<select id="cibil" required>
-<option value="">Select CIBIL Score</option>
-<option value="750">750+</option>
-<option value="700">700-749</option>
-<option value="650">Below 700</option>
-</select>
-<button type="button" onclick="checkEligibility()">Check Eligibility</button>
-</form>
-<h3 id="eligibilityResult"></h3>
-</section>
-
-<section id="form">
-<h2>Loan Enquiry Form</h2>
-<form>
-<input type="text" placeholder="Full Name" required>
-<input type="tel" placeholder="Mobile Number" pattern="[0-9]{10}" required>
-<input type="number" placeholder="Loan Amount" required>
-<select required>
-<option value="">Select Loan Type</option>
-<option value="Personal Loan">Personal Loan</option>
-<option value="Bajaj Card">Bajaj Card</option>
-<option value="IDFC Card">IDFC Card</option>
-<option value="Business Loan">Business Loan</option>
-</select>
-<textarea placeholder="Your Message"></textarea>
-<button type="submit">Submit</button>
-</form>
-</section>
-
-<section id="emi">
-<h2>EMI Calculator</h2>
-<input type="number" id="loan" placeholder="Loan Amount" required>
-<input type="number" id="rate" placeholder="Interest Rate (%)" required>
-<input type="number" id="year" placeholder="Tenure (Years)" required>
-<button onclick="calculateEMI()">Calculate EMI</button>
-<h3 id="result"></h3>
-</section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<p>Phone: <a href="tel:6309321325">6309321325</a></p>
-<p>WhatsApp: <a href="https://wa.me/916309321325">Chat Now</a></p>
 </section>
 
 <footer>
-<p>© 2026 Smart Capital Finance</p>
-<a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms & Conditions</a>
+
+<p>
+
+© 2026 Smart Capital Loans
+
+</p>
+
 </footer>
 
-<a class="whatsapp" href="https://wa.me/916309321325" aria-label="Chat on WhatsApp">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<a class="call" href="tel:6309321325" aria-label="Call us">
-<i class="fas fa-phone"></i>
-</a>
-
-<script src="script.js"></script>
+<script src="js/app.js"></script>
 
 </body>
 </html>
