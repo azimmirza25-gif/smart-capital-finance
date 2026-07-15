@@ -96,6 +96,33 @@ required>
 <input type="number"
 placeholder="Loan Amount"
 required>
+  <section id="eligibility">
+
+<h2>Check Your Loan Eligibility</h2>
+
+<form id="eligibilityForm">
+
+<input type="number" id="age" placeholder="Age">
+
+<input type="number" id="income" placeholder="Monthly Income">
+
+<input type="number" id="emi" placeholder="Existing EMI">
+
+<select id="cibil">
+<option value="750">750+</option>
+<option value="700">700-749</option>
+<option value="650">Below 700</option>
+</select>
+
+<button type="button" onclick="checkEligibility()">
+Check Eligibility
+</button>
+
+</form>
+
+<h3 id="eligibilityResult"></h3>
+
+  </section>
 
 <select>
 
