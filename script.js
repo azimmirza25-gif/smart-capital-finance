@@ -80,5 +80,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 });
 function checkEligibility() {
-    alert("Working");
+
+    let age = Number(document.getElementById("age").value);
+    let income = Number(document.getElementById("income").value);
+    let emi = Number(document.getElementById("emi").value);
+    let cibil = Number(document.getElementById("cibil").value);
+
+    let result = document.getElementById("eligibilityResult");
+
+    if (age < 21 || age > 60) {
+        result.innerHTML = "❌ Not Eligible (Age should be 21-60)";
+        return;
+    }
+
+    if (income < 20000) {
+        result.innerHTML = "❌ Not Eligible (Minimum income ₹20,000)";
+        return;
+    }
+
+    if (cibil < 700) {
+        result.innerHTML = "⚠️ Low CIBIL Score. Eligibility depends on lender.";
+        return;
+    }
+
+    let maxLoan = Math.round((income - emi) * 60);
+
+    result.innerHTML =
+        "✅ Congratulations!<br>" +
+        "You are likely eligible.<br><br>" +
+        "Estimated Loan Amount: <b>₹" +
+        maxLoan.toLocaleString("en-IN") +
+        "</b>";
 }
