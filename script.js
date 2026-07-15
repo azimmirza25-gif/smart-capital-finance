@@ -118,3 +118,12 @@ document.getElementById("drawer").style.width="280px";
 function closeMenu(){
 document.getElementById("drawer").style.width="0";
 }
+function openDrawer() {
+    document.getElementById("drawer").classList.add("active");
+    document.getElementById("overlay").classList.add("active");
+}
+
+function closeDrawer() {
+    document.getElementById("drawer").classList.remove("active");
+    document.getElementById("overlay").classList.remove("active");
+}
