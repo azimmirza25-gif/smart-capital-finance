@@ -61,3 +61,27 @@ Submit Application
 
 </body>
 </html>
+const form = document.getElementById("loanForm");
+
+form.addEventListener("submit", function(e){
+
+e.preventDefault();
+
+const name = document.getElementById("name").value;
+const mobile = document.getElementById("mobile").value;
+const email = document.getElementById("email").value;
+const city = document.getElementById("city").value;
+const amount = document.getElementById("amount").value;
+const loanType = document.getElementById("loanType").value;
+
+if(mobile.length != 10){
+alert("Please enter a valid 10-digit mobile number.");
+return;
+}
+
+document.getElementById("message").innerHTML =
+"✅ Thank you <b>"+name+"</b>. Your loan application has been submitted successfully.";
+
+form.reset();
+
+});
