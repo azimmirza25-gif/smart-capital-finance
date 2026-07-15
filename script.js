@@ -79,3 +79,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 
 });
+function checkEligibility() {
+    alert("Working");
+}
