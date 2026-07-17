@@ -3,92 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Smart Capital Loans</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-
+<title>Smart Capital Finance</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
 
 <header>
-
 <div class="logo">
-<h2>🏦 Smart Capital Loans</h2>
+<i class="fa-solid fa-building-columns"></i>
+Smart Capital Finance
 </div>
 
-<nav>
-
-<a href="index.html">Home</a>
-
-<a href="about.html">About</a>
-
-<a href="services.html">Services</a>
-
-<a href="apply.html">Apply</a>
-
-<a href="emi.html">EMI</a>
-
-<a href="contact.html">Contact</a>
-
-</nav>
-
+<div class="menu-btn" onclick="openMenu()">
+<i class="fa-solid fa-bars"></i>
+</div>
 </header>
 
-<section class="hero">
+<div id="drawer" class="drawer">
 
-<div class="hero-content">
+<span class="close" onclick="closeMenu()">&times;</span>
 
-<h1>Instant Personal & Consumer Loans</h1>
-
-<p>
-Fast Approval • Easy EMI • Minimum Documentation
-</p>
-
-<a href="apply.html" class="btn">
-Apply Now
-</a>
-
-</div>
-
-</section>
-
-<section class="features">
-
-<div class="card">
-<i class="fa-solid fa-bolt"></i>
-<h3>Instant Approval</h3>
-<p>Approval within minutes.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-file"></i>
-<h3>Easy Documents</h3>
-<p>Simple paper work.</p>
-</div>
-
-<div class="card">
-<i class="fa-solid fa-money-bill"></i>
-<h3>Affordable EMI</h3>
-<p>Flexible repayment plans.</p>
-</div>
-
-</section>
-
-<footer>
-
-<p>
-
-© 2026 Smart Capital Loans
-
-</p>
-
-</footer>
-
-<script src="js/app.js"></script>
-
-</body>
-</html>
+<a href="#">Home</a>
+<a href="#">Personal Loan</a>
+<a href="#">Business Loan</a>
+<a href="#">Credit Card</a>
+<a href="#">EMI Calculator</a>
+<a href="#">About</a>
