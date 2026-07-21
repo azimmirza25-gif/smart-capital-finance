@@ -1,324 +1,261 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickLoan - Fast & Easy Loans</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Google Fonts (Inter) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Load Phosphor Icons -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        primary: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            900: '#14532d',
-                        },
-                        secondary: '#1e293b'
-                    }
-                }
+    <title>QuickLoan - आसान और तेज़ पर्सनल लोन</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header / Navbar */
+        header {
+            background-color: #0d6efd;
+            color: #fff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
             }
         }
-    </script>
-    <style>
-        /* Custom styles for the range slider */
-        input[type=range] {
-            -webkit-appearance: none;
+
+        /* Card Styling */
+        .card {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .card h2 {
+            margin-bottom: 1.5rem;
+            color: #0d6efd;
+            border-bottom: 2px solid #eef2f5;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input, .form-group select {
             width: 100%;
-            background: transparent;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
         }
-        input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            height: 24px;
-            width: 24px;
-            border-radius: 50%;
-            background: #22c55e;
-            cursor: pointer;
-            margin-top: -10px;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+        .form-group input[type="range"] {
+            padding: 0;
         }
-        input[type=range]::-webkit-slider-runnable-track {
+
+        .btn {
             width: 100%;
-            height: 6px;
+            padding: 0.9rem;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
             cursor: pointer;
-            background: #e2e8f0;
-            border-radius: 9999px;
+            transition: background 0.3s ease;
         }
-        input[type=range]:focus {
-            outline: none;
+
+        .btn:hover {
+            background-color: #0b5ed7;
         }
-        
-        .hero-pattern {
-            background-color: #ffffff;
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 20px 20px;
+
+        /* EMI Result Box */
+        .result-box {
+            background-color: #e7f1ff;
+            border-left: 5px solid #0d6efd;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-radius: 4px;
         }
-        
-        /* Modal Animation */
-        .modal-enter {
-            opacity: 0;
-            transform: scale(0.95);
+
+        .result-box div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
         }
-        .modal-enter-active {
-            opacity: 1;
-            transform: scale(1);
-            transition: opacity 300ms, transform 300ms;
-        }
-        .modal-exit {
-            opacity: 1;
-            transform: scale(1);
-        }
-        .modal-exit-active {
-            opacity: 0;
-            transform: scale(0.95);
-            transition: opacity 300ms, transform 300ms;
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 1.5rem;
+            background: #333;
+            color: #fff;
+            margin-top: 3rem;
+            font-size: 0.85rem;
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-gray-50 antialiased selection:bg-primary-500 selection:text-white">
+<body>
 
-    <!-- Navigation Bar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 backdrop-blur-md bg-white/80 border-b border-gray-100 shadow-sm" id="navbar">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-20 items-center">
-                <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
-                    <div class="w-10 h-10 bg-primary-500 rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary-500/30">
-                        <i class="ph-bold ph-currency-circle-dollar text-2xl"></i>
-                    </div>
-                    <span class="font-bold text-2xl tracking-tight text-secondary">Quick<span class="text-primary-600">Loan</span></span>
-                </div>
+    <!-- Navbar -->
+    <header>
+        <h1>EasyLoan Finance</h1>
+        <span>Helpline: +91 98765 43210</span>
+    </header>
 
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex space-x-8 items-center">
-                    <a href="#features" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Features</a>
-                    <a href="#calculator" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">EMI Calculator</a>
-                    <a href="#testimonials" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">Reviews</a>
-                    <a href="#faq" class="text-gray-600 hover:text-primary-600 font-medium transition-colors">FAQ</a>
-                </div>
+    <div class="container">
+        
+        <!-- 1. EMI Calculator -->
+        <div class="card">
+            <h2>📊 EMI Calculator</h2>
+            
+            <div class="form-group">
+                <label for="amount">लोन राशि (₹): <span id="amountVal">2,00,000</span></label>
+                <input type="range" id="amount" min="10000" max="1000000" step="10000" value="200000">
+            </div>
 
-                <!-- Action Button & Mobile Toggle -->
-                <div class="flex items-center gap-4">
-                    <button onclick="openApplyModal()" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 border border-transparent text-sm font-semibold rounded-full text-white bg-secondary hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5">
-                        Apply Now
-                    </button>
-                    
-                    <!-- Mobile menu button -->
-                    <button type="button" class="md:hidden bg-white p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500" aria-expanded="false" id="mobile-menu-button">
-                        <span class="sr-only">Open main menu</span>
-                        <i class="ph ph-list text-2xl" id="menu-icon"></i>
-                    </button>
-                </div>
+            <div class="form-group">
+                <label for="interest">ब्याज दर (% प्रति वर्ष): <span id="interestVal">12</span>%</label>
+                <input type="range" id="interest" min="8" max="24" step="0.5" value="12">
+            </div>
+
+            <div class="form-group">
+                <label for="tenure">अवधि (महीने): <span id="tenureVal">24</span> महीने</label>
+                <input type="range" id="tenure" min="6" max="60" step="6" value="24">
+            </div>
+
+            <div class="result-box">
+                <div><span>प्रति माह EMI:</span> <span id="monthlyEmi">₹ 9,415</span></div>
+                <div><span>कुल ब्याज:</span> <span id="totalInterest">₹ 25,953</span></div>
+                <div><span>कुल भुगातान:</span> <span id="totalPayment">₹ 2,25,953</span></div>
             </div>
         </div>
 
-        <!-- Mobile Menu Panel -->
-        <div class="md:hidden hidden bg-white border-t border-gray-100 absolute w-full shadow-lg" id="mobile-menu">
-            <div class="px-4 pt-2 pb-6 space-y-1 sm:px-3 flex flex-col gap-2">
-                <a href="#features" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Features</a>
-                <a href="#calculator" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">EMI Calculator</a>
-                <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">Reviews</a>
-                <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary-600 hover:bg-primary-50">FAQ</a>
-                <button onclick="openApplyModal()" class="mt-4 w-full flex items-center justify-center px-4 py-3 border border-transparent text-base font-medium rounded-xl text-white bg-primary-600 hover:bg-primary-700">
-                    Apply Now
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <main class="pt-20">
-        <div class="relative overflow-hidden bg-white hero-pattern min-h-[90vh] flex items-center">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full pt-10 pb-20 lg:pt-0 lg:pb-0">
-                <div class="lg:grid lg:grid-cols-12 lg:gap-8 items-center">
-                    
-                    <!-- Hero Content -->
-                    <div class="sm:text-center md:max-w-2xl md:mx-auto lg:col-span-6 lg:text-left">
-                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-50 text-primary-700 font-medium text-sm mb-6 border border-primary-100">
-                            <i class="ph-fill ph-lightning"></i>
-                            Instant Approval in 5 Minutes
-                        </div>
-                        <h1 class="text-4xl tracking-tight font-extrabold text-secondary sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl mb-6">
-                            <span class="block">Your Dreams,</span>
-                            <span class="block text-primary-600">Financed Instantly.</span>
-                        </h1>
-                        <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0 mb-8">
-                            Get personal loans up to ₹10,00,000 with zero hidden charges, flexible repayment options, and the lowest interest rates starting at 9.9% p.a.
-                        </p>
-                        
-                        <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start gap-4">
-                            <div class="rounded-full shadow-lg shadow-primary-500/30">
-                                <button onclick="openApplyModal()" class="w-full flex items-center justify-center px-8 py-4 border border-transparent text-base font-bold rounded-full text-white bg-primary-600 hover:bg-primary-700 md:py-4 md:text-lg md:px-10 transition-all hover:scale-105">
-                                    Check Eligibility
-                                    <i class="ph-bold ph-arrow-right ml-2"></i>
-                                </button>
-                            </div>
-                            <div class="mt-3 sm:mt-0">
-                                <a href="#calculator" class="w-full flex items-center justify-center px-8 py-4 border-2 border-gray-200 text-base font-bold rounded-full text-gray-700 bg-white hover:bg-gray-50 hover:border-gray-300 md:py-4 md:text-lg md:px-10 transition-all">
-                                    Calculate EMI
-                                </a>
-                            </div>
-                        </div>
-
-                        <!-- Trust Badges -->
-                        <div class="mt-10 flex items-center justify-center lg:justify-start gap-6 text-gray-400">
-                            <div class="flex flex-col items-center lg:items-start">
-                                <span class="font-bold text-2xl text-secondary">50k+</span>
-                                <span class="text-sm font-medium">Happy Customers</span>
-                            </div>
-                            <div class="w-px h-10 bg-gray-200"></div>
-                            <div class="flex flex-col items-center lg:items-start">
-                                <span class="font-bold text-2xl text-secondary">₹500Cr+</span>
-                                <span class="text-sm font-medium">Disbursed</span>
-                            </div>
-                             <div class="w-px h-10 bg-gray-200"></div>
-                            <div class="flex flex-col items-center lg:items-start">
-                                <span class="font-bold text-2xl text-secondary">4.9/5</span>
-                                <div class="flex text-yellow-400 text-sm">
-                                    <i class="ph-fill ph-star"></i>
-                                    <i class="ph-fill ph-star"></i>
-                                    <i class="ph-fill ph-star"></i>
-                                    <i class="ph-fill ph-star"></i>
-                                    <i class="ph-fill ph-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Hero Image/Graphic -->
-                    <div class="mt-12 relative sm:max-w-lg sm:mx-auto lg:mt-0 lg:max-w-none lg:mx-0 lg:col-span-6 lg:flex lg:items-center">
-                        <div class="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md bg-white border border-gray-100 p-8 transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                            
-                            <!-- Decorative elements -->
-                            <div class="absolute -top-6 -right-6 w-24 h-24 bg-primary-100 rounded-full blur-2xl opacity-70"></div>
-                            <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-100 rounded-full blur-2xl opacity-70"></div>
-
-                            <div class="relative">
-                                <div class="flex justify-between items-center mb-8">
-                                    <div>
-                                        <p class="text-sm text-gray-500 font-medium">Approved Amount</p>
-                                        <p class="text-3xl font-bold text-secondary">₹ 5,00,000</p>
-                                    </div>
-                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                                        <i class="ph-bold ph-check-circle text-2xl"></i>
-                                    </div>
-                                </div>
-
-                                <div class="space-y-4">
-                                    <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm text-primary-600">
-                                                <i class="ph-bold ph-calendar-blank text-xl"></i>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm font-medium text-gray-900">Tenure</p>
-                                                <p class="text-xs text-gray-500">36 Months</p>
-                                            </div>
-                                        </div>
-                                        <p class="font-semibold text-secondary">₹16,104 / mo</p>
-                                    </div>
-
-                                    <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
-                                        <div class="flex items-center gap-3">
-                                            <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center shadow-sm text-primary-600">
-                                                <i class="ph-bold ph-percent text-xl"></i>
-                                            </div>
-                                            <div>
-                                                <p class="text-sm font-medium text-gray-900">Interest Rate</p>
-                                                <p class="text-xs text-gray-500">Reducing balance</p>
-                                            </div>
-                                        </div>
-                                        <p class="font-semibold text-secondary">10.5% p.a.</p>
-                                    </div>
-                                </div>
-
-                                <div class="mt-8 pt-6 border-t border-gray-100">
-                                    <div class="flex justify-between items-center text-sm font-medium text-gray-500">
-                                        <span>Status</span>
-                                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-bold">Disbursed Successfully</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Features Section -->
-        <section id="features" class="py-24 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="text-base text-primary-600 font-semibold tracking-wide uppercase">Why Choose Us</h2>
-                    <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-secondary sm:text-4xl">
-                        A better way to get a loan
-                    </p>
-                    <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">
-                        We have streamlined the entire loan process to make it as painless and quick as possible.
-                    </p>
+        <!-- 2. Application Form -->
+        <div class="card">
+            <h2>📝 लोन के लिए अप्लाई करें</h2>
+            <form id="loanForm">
+                <div class="form-group">
+                    <label for="fullName">पूरा नाम (PAN कार्ड के अनुसार)</label>
+                    <input type="text" id="fullName" placeholder="Rahul Sharma" required>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Feature 1 -->
-                    <div class="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 group">
-                        <div class="w-14 h-14 bg-primary-100 rounded-xl flex items-center justify-center text-primary-600 mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph-bold ph-rocket-launch text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Instant Disbursal</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Once approved, the loan amount is credited directly to your bank account within minutes, not days.
-                        </p>
-                    </div>
+                <div class="form-group">
+                    <label for="mobile">मोबाइल नंबर</label>
+                    <input type="tel" id="mobile" placeholder="9876543210" pattern="[0-9]{10}" required>
+                </div>
 
-                    <!-- Feature 2 -->
-                    <div class="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 group">
-                        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph-bold ph-file-text text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">100% Paperless</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Complete the entire application process online. No physical visits, no printing documents required.
-                        </p>
-                    </div>
+                <div class="form-group">
+                    <label for="employment">रोजगार का प्रकार</label>
+                    <select id="employment" required>
+                        <option value="salaried">सैलरीड (Salaried)</option>
+                        <option value="self-employed">बिजनेस / Self-Employed</option>
+                    </select>
+                </div>
 
-                    <!-- Feature 3 -->
-                    <div class="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 group">
-                        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph-bold ph-wallet text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Flexible Repayment</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Choose a tenure that suits you best, ranging from 3 months to 60 months with easy EMI options.
-                        </p>
-                    </div>
-                    
-                    <!-- Feature 4 -->
-                    <div class="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 group">
-                        <div class="w-14 h-14 bg-orange-100 rounded-xl flex items-center justify-center text-orange-600 mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph-bold ph-shield-check text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Secure & Confidential</h3>
-                        <p class="text-gray-600 leading-relaxed">
-                            Your data is encrypted with bank-level security. We never share your personal information with third parties.
-                        </p>
-                    </div>
+                <div class="form-group">
+                    <label for="salary">मासिक आय (Monthly Income ₹)</label>
+                    <input type="number" id="salary" placeholder="25000" required>
+                </div>
 
-                    <!-- Feature 5 -->
-                    <div class="bg-gray-50 rounded-2xl p-8 hover:bg-white hover:shadow-xl transition-all duration-300 border border-transparent hover:border-gray-100 group">
-                        <div class="w-14 h-14 bg-rose-100 rounded-xl flex items-center justify-center text-rose-600 mb-6 group-hover:scale-110 transition-transform">
-                            <i class="ph-bold ph-prohibit text-3xl"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-secondary mb-3">Zero Hidden Fees
+                <button type="submit" class="btn">अभी अप्लाई करें</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Footer & Disclaimer -->
+    <footer>
+        <p>डिस्कलेमर: हम सीधे लोन प्रदान नहीं करते हैं। हम केवल RBI से मान्यता प्राप्त बैंकों और NBFCs के साथ लीड्स शेयर करते हैं।</p>
+        <p>© 2026 EasyLoan Finance. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for Logic -->
+    <script>
+        // DOM Elements
+        const amountInput = document.getElementById('amount');
+        const interestInput = document.getElementById('interest');
+        const tenureInput = document.getElementById('tenure');
+
+        const amountVal = document.getElementById('amountVal');
+        const interestVal = document.getElementById('interestVal');
+        const tenureVal = document.getElementById('tenureVal');
+
+        const monthlyEmi = document.getElementById('monthlyEmi');
+        const totalInterest = document.getElementById('totalInterest');
+        const totalPayment = document.getElementById('totalPayment');
+
+        // Calculate EMI Function
+        function calculateEMI() {
+            let p = parseFloat(amountInput.value);
+            let r = parseFloat(interestInput.value) / 12 / 100;
+            let n = parseFloat(tenureInput.value);
+
+            // Display Values
+            amountVal.innerText = p.toLocaleString('en-IN');
+            interestVal.innerText = interestInput.value;
+            tenureVal.innerText = n;
+
+            // EMI Formula: [P x R x (1+R)^N]/[(1+R)^N-1]
+            let emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+            let totalPayable = emi * n;
+            let totalInt = totalPayable - p;
+
+            monthlyEmi.innerText = "₹ " + Math.round(emi).toLocaleString('en-IN');
+            totalInterest.innerText = "₹ " + Math.round(totalInt).toLocaleString('en-IN');
+            totalPayment.innerText = "₹ " + Math.round(totalPayable).toLocaleString('en-IN');
+        }
+
+        // Event Listeners for Sliders
+        amountInput.addEventListener('input', calculateEMI);
+        interestInput.addEventListener('input', calculateEMI);
+        tenureInput.addEventListener('input', calculateEMI);
+
+        // Form Submission Logic
+        document.getElementById('loanForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('धन्यवाद! आपकी लोन एप्लीकेशन सबमिट हो गई है। हमारी टीम जल्द ही आपसे संपर्क करेगी।');
+            this.reset();
+        });
+
+        // Initial Calculation
+        calculateEMI();
+    </script>
+</body>
+</html>
