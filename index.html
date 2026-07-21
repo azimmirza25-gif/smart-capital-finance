@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Credit & Loan Services | Moneyview Style</title>
-    <!-- Google Fonts -->
+    <title>Instant Credit & Loan Services</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -15,554 +14,148 @@
             --accent-green: #00c853;
             --text-main: #ffffff;
             --text-sub: #94a3b8;
-            --glow-color: rgba(0, 230, 118, 0.15);
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            overflow-x: hidden;
-        }
+        nav { width: 100%; max-width: 1200px; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; }
+        .logo span { color: var(--primary-green); }
+        .badge { background: rgba(0, 230, 118, 0.1); color: var(--primary-green); padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; border: 1px solid rgba(0, 230, 118, 0.2); }
 
-        /* Subtle Background Glows */
-        .bg-glow {
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--primary-green);
-            filter: blur(150px);
-            opacity: 0.15;
-            border-radius: 50%;
-            z-index: -1;
-        }
-        .glow-1 { top: -50px; left: -50px; }
-        .glow-2 { bottom: 100px; right: -50px; }
+        .hero { text-align: center; margin: 1.5rem 1rem 2.5rem; max-width: 750px; }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; }
+        .hero h1 span { color: var(--primary-green); }
 
-        /* Navigation */
-        nav {
-            width: 100%;
-            max-width: 1200px;
-            padding: 1.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .app-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; padding: 0 1.5rem; margin-bottom: 4rem; }
+        @media (max-width: 768px) { .app-container { grid-template-columns: 1fr; } }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
+        .glass-card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 24px; padding: 2rem; backdrop-filter: blur(16px); }
+        .input-group { margin-bottom: 1.2rem; }
+        .input-group label { display: block; font-size: 0.85rem; color: var(--text-sub); margin-bottom: 0.5rem; }
+        .input-group input, .input-group select { width: 100%; padding: 0.9rem; background: #0f172a; border: 1px solid var(--border-color); border-radius: 12px; color: #fff; outline: none; }
 
-        .logo span {
-            color: var(--primary-green);
-        }
-
-        .badge {
-            background: rgba(0, 230, 118, 0.1);
-            color: var(--primary-green);
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 1px solid rgba(0, 230, 118, 0.2);
-        }
-
-        /* Hero Section */
-        .hero {
-            text-align: center;
-            margin: 1.5rem 1rem 2.5rem;
-            max-width: 750px;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        .hero h1 span {
-            background: linear-gradient(135deg, #00e676, #80e27e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-sub);
-            font-size: 1.1rem;
-        }
-
-        /* Features Pill Bar */
-        .features-bar {
-            display: flex;
-            gap: 1.2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 1.5rem;
-        }
-
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: var(--text-sub);
-        }
-
-        .feature-item svg {
-            fill: var(--primary-green);
-            width: 18px;
-            height: 18px;
-        }
-
-        /* Categories Section */
-        .categories-container {
-            width: 100%;
-            max-width: 1100px;
-            padding: 0 1.5rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .category-title {
-            font-size: 1.1rem;
-            color: var(--text-sub);
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-
-        .category-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1rem;
-        }
-
-        .cat-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            padding: 1.2rem;
-            border-radius: 16px;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .cat-card:hover, .cat-card.active {
-            border-color: var(--primary-green);
-            background: rgba(0, 230, 118, 0.08);
-            transform: translateY(-4px);
-            box-shadow: 0 8px 20px rgba(0, 230, 118, 0.15);
-        }
-
-        .cat-icon {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            display: block;
-        }
-
-        .cat-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 0.2rem;
-        }
-
-        .cat-desc {
-            font-size: 0.75rem;
-            color: var(--text-sub);
-        }
-
-        /* Main App Grid */
-        .app-container {
-            width: 100%;
-            max-width: 1100px;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 2rem;
-            padding: 0 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        @media (max-width: 900px) {
-            .app-container {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 { font-size: 2.1rem; }
-        }
-
-        /* Glassmorphism Cards */
-        .glass-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(16px);
-            border: 1px solid var(--border-color);
-            border-radius: 24px;
-            padding: 2.2rem;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        .card-header {
-            margin-bottom: 1.8rem;
-        }
-
-        .card-header h2 {
-            font-size: 1.35rem;
-            font-weight: 700;
-        }
-
-        /* Sliders Styling */
-        .slider-group {
-            margin-bottom: 1.8rem;
-        }
-
-        .slider-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .slider-label {
-            color: var(--text-sub);
-            font-size: 0.95rem;
-        }
-
-        .slider-value {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-green);
-        }
-
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 8px;
-            border-radius: 5px;
-            background: #1e293b;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 22px;
-            height: 22px;
-            border-radius: 50%;
-            background: var(--primary-green);
-            cursor: pointer;
-            box-shadow: 0 0 15px var(--primary-green);
-            transition: transform 0.1s ease;
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
-        }
-
-        /* EMI Summary Display Box */
-        .emi-summary {
-            background: rgba(0, 230, 118, 0.05);
-            border: 1px solid rgba(0, 230, 118, 0.2);
-            border-radius: 16px;
-            padding: 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .emi-amount {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary-green);
-        }
-
-        /* Form Inputs */
-        .input-group {
-            margin-bottom: 1.2rem;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-sub);
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-
-        .input-group input, .input-group select {
-            width: 100%;
-            padding: 1rem 1.2rem;
-            background: #0f172a;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
-            transition: border 0.3s ease;
-        }
-
-        .input-group input:focus, .input-group select:focus {
-            border-color: var(--primary-green);
-            box-shadow: 0 0 10px rgba(0, 230, 118, 0.1);
-        }
-
-        /* Action Button */
-        .btn-glow {
-            width: 100%;
-            padding: 1.1rem;
-            background: linear-gradient(135deg, #00e676, #00c853);
-            border: none;
-            border-radius: 12px;
-            color: #000;
-            font-size: 1.05rem;
-            font-weight: 800;
-            cursor: pointer;
-            box-shadow: 0 8px 25px rgba(0, 230, 118, 0.3);
-            transition: all 0.3s ease;
-            margin-top: 0.8rem;
-        }
-
-        .btn-glow:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(0, 230, 118, 0.4);
-        }
-
-        footer {
-            margin-top: auto;
-            padding: 2rem;
-            color: var(--text-sub);
-            font-size: 0.8rem;
-            text-align: center;
-            border-top: 1px solid var(--border-color);
-            width: 100%;
-        }
+        .btn-glow { width: 100%; padding: 1.1rem; background: linear-gradient(135deg, #00e676, #00c853); border: none; border-radius: 12px; color: #000; font-size: 1.05rem; font-weight: 800; cursor: pointer; transition: all 0.3s; }
+        .btn-glow:hover { transform: translateY(-2px); }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow glow-1"></div>
-    <div class="bg-glow glow-2"></div>
-
-    <!-- Navigation -->
     <nav>
-        <div class="logo">Smart<span>Capital</span></div>
-        <div class="badge">⚡ 100% Paperless</div>
+        <div class="logo">Quick<span>Loan</span></div>
+        <div class="badge">⚡ Instant Approval</div>
     </nav>
 
-    <!-- Hero Header -->
     <section class="hero">
-        <h1>Instant Credit Up To <span>₹2,00,00</span></h1>
-        <p>बिना किसी परेशानी के सीधा आपके बैंक अकाउंट में। Instant approval 2 मिनट में!</p>
-
-        <div class="features-bar">
-            <div class="feature-item">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                Low Interest Rates
-            </div>
-            <div class="feature-item">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                Flexible Tenure
-            </div>
-            <div class="feature-item">
-                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                Zero Security Required
-            </div>
-        </div>
+        <h1>Apply for Instant Loan Up To <span>₹10,000,000</span></h1>
     </section>
 
-    <!-- Category Selector Section -->
-    <section class="categories-container">
-        <div class="category-title">Select Loan Category</div>
-        <div class="category-grid">
-            
-            <!-- Personal Loan -->
-            <div class="cat-card active" onclick="selectCategory('personal', 200000, 24, 14, this)">
-                <span class="cat-icon">👤</span>
-                <div class="cat-name">Personal Loan</div>
-                <div class="cat-desc">Up to ₹5 Lakhs</div>
-            </div>
-
-            <!-- Business Loan -->
-            <div class="cat-card" onclick="selectCategory('business', 500000, 36, 16, this)">
-                <span class="cat-icon">💼</span>
-                <div class="cat-name">Business Loan</div>
-                <div class="cat-desc">Up to ₹5 Lakhs</div>
-            </div>
-
-            <!-- Two Wheeler Loan -->
-            <div class="cat-card" onclick="selectCategory('bike', 80000, 18, 12, this)">
-                <span class="cat-icon">🛵</span>
-                <div class="cat-name">Consumer Loans</div>
-                <div class="cat-desc">Up to ₹1.5 Lakhs</div>
-            </div>
-
-            <!-- Home Design / Renovation -->
-            <div class="cat-card" onclick="selectCategory('home', 300000, 48, 11, this)">
-                <span class="cat-icon">🏠</span>
-                <div class="cat-name">Home Design</div>
-                <div class="cat-desc">Up to ₹8 Lakhs</div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- App Container -->
     <div class="app-container">
-
-        <!-- 1. Interactive EMI Calculator -->
-        <div class="glass-card">
-            <div class="card-header">
-                <h2>⚡ Loan EMI Calculator</h2>
-            </div>
-
-            <!-- Amount Slider -->
-            <div class="slider-group">
-                <div class="slider-header">
-                    <span class="slider-label">Loan Amount</span>
-                    <span class="slider-value" id="amountVal">₹ 2,00,000</span>
-                </div>
-                <input type="range" id="amount" min="20000" max="1000000" step="10000" value="200000">
-            </div>
-
-            <!-- Tenure Slider -->
-            <div class="slider-group">
-                <div class="slider-header">
-                    <span class="slider-label">Tenure (Months)</span>
-                    <span class="slider-value" id="tenureVal">24 Months</span>
-                </div>
-                <input type="range" id="tenure" min="6" max="60" step="6" value="24">
-            </div>
-
-            <!-- Interest Rate Slider -->
-            <div class="slider-group">
-                <div class="slider-header">
-                    <span class="slider-label">Interest Rate (% p.a.)</span>
-                    <span class="slider-value" id="rateVal">14%</span>
-                </div>
-                <input type="range" id="rate" min="10" max="28" step="0.5" value="14">
-            </div>
-
-            <!-- Output Box -->
-            <div class="emi-summary">
-                <div>
-                    <div style="font-size: 0.85rem; color: var(--text-sub);">Monthly EMI</div>
-                    <div class="emi-amount" id="emiDisplay">₹ 9,602</div>
-                </div>
-                <div style="text-align: right; font-size: 0.85rem; color: var(--text-sub);">
-                    <div>Total Interest: <span id="interestDisplay" style="color: #fff;">₹ 30,460</span></div>
-                    <div>Total Payable: <span id="totalDisplay" style="color: #fff;">₹ 2,30,460</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. Application Form -->
-        <div class="glass-card">
-            <div class="card-header">
-                <h2>📋 Check Eligibility Now</h2>
-            </div>
+        <!-- Form Section -->
+        <div class="glass-card" style="grid-column: span 2; max-width: 600px; margin: 0 auto; width: 100%;">
+            <h2 style="margin-bottom: 1.5rem;">📋 Eligibility Verification</h2>
 
             <form id="loanForm">
                 <div class="input-group">
-                    <label>Full Name (PAN के अनुसार)</label>
-                    <input type="text" placeholder="e.g. Rahul Sharma" required>
+                    <label>Full Name (PAN Name)</label>
+                    <input type="text" id="custName" placeholder="e.g. Rahul Sharma" required>
                 </div>
 
                 <div class="input-group">
                     <label>Mobile Number</label>
-                    <input type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
+                    <input type="tel" id="custMobile" placeholder="10-digit number" pattern="[0-9]{10}" required>
                 </div>
 
                 <div class="input-group">
                     <label>Employment Type</label>
-                    <select required>
-                        <option value="salaried">Salaried Employee</option>
-                        <option value="self-employed">Self-Employed / Business Owner</option>
+                    <select id="custEmployment" required>
+                        <option value="Salaried">Salaried Employee</option>
+                        <option value="Self-Employed">Self-Employed / Business</option>
                     </select>
                 </div>
 
                 <div class="input-group">
-                    <label>Monthly Net Income (₹)</label>
-                    <input type="number" placeholder="e.g. 35000" required>
+                    <label>Monthly Salary (₹)</label>
+                    <input type="number" id="custIncome" placeholder="e.g. 35000" required>
                 </div>
 
-                <button type="submit" class="btn-glow">Get Instant Approval ➔</button>
+                <div class="input-group">
+                    <label>Loan Amount Needed (₹)</label>
+                    <input type="number" id="loanAmount" placeholder="e.g. 200000" required>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-glow">
+                    Submit & Continue to WhatsApp 💬
+                </button>
             </form>
         </div>
-
     </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>Disclaimer: Smart Capital Finance is an aggregator platform. We do not directly provide loans. All loans are disbursed by RBI registered NBFCs & Banks.</p>
-        <p style="margin-top: 5px;">© 2026 EasyLoan Technologies Ltd. All rights reserved.</p>
-    </footer>
-
-    <!-- Interactive Script -->
     <script>
-        const amountInput = document.getElementById('amount');
-        const tenureInput = document.getElementById('tenure');
-        const rateInput = document.getElementById('rate');
+        // 1. 📲 आपका व्हाट्सएप नंबर (देश कोड के साथ, जैसे 91)
+        const WHATSAPP_NUMBER = "919876543210"; 
 
-        const amountVal = document.getElementById('amountVal');
-        const tenureVal = document.getElementById('tenureVal');
-        const rateVal = document.getElementById('rateVal');
+        // 2. 🔌 आपकी API का Endpoint URL
+        const API_ENDPOINT = "https://your-domain.com/api/leads/submit"; 
 
-        const emiDisplay = document.getElementById('emiDisplay');
-        const interestDisplay = document.getElementById('interestDisplay');
-        const totalDisplay = document.getElementById('totalDisplay');
+        // 3. 🔑 अगर API में Auth Token / API Key है (ऑप्शनल)
+        const API_KEY = "YOUR_API_KEY_HERE";
 
-        function updateEMI() {
-            let P = parseFloat(amountInput.value);
-            let N = parseFloat(tenureInput.value);
-            let R = parseFloat(rateInput.value) / 12 / 100;
-
-            amountVal.innerText = '₹ ' + P.toLocaleString('en-IN');
-            tenureVal.innerText = N + ' Months';
-            rateVal.innerText = rateInput.value + '%';
-
-            // EMI Formula: [P x R x (1+R)^N]/[(1+R)^N-1]
-            let emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
-            let totalPayable = emi * N;
-            let totalInterest = totalPayable - P;
-
-            emiDisplay.innerText = '₹ ' + Math.round(emi).toLocaleString('en-IN');
-            interestDisplay.innerText = '₹ ' + Math.round(totalInterest).toLocaleString('en-IN');
-            totalDisplay.innerText = '₹ ' + Math.round(totalPayable).toLocaleString('en-IN');
-        }
-
-        // Category Selection Logic
-        function selectCategory(type, amount, tenure, rate, element) {
-            document.querySelectorAll('.cat-card').forEach(card => card.classList.remove('active'));
-            element.classList.add('active');
-
-            amountInput.value = amount;
-            tenureInput.value = tenure;
-            rateInput.value = rate;
-
-            updateEMI();
-        }
-
-        amountInput.addEventListener('input', updateEMI);
-        tenureInput.addEventListener('input', updateEMI);
-        rateInput.addEventListener('input', updateEMI);
-
-        document.getElementById('loanForm').addEventListener('submit', function(e) {
+        document.getElementById('loanForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            alert('🎉 Congratulations! You are eligible for an instant loan. Our team will verify your details shortly.');
-            this.reset();
-        });
 
-        // Initialize Calculator
-        updateEMI();
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.innerText = "Processing...";
+            submitBtn.disabled = true;
+
+            // फॉर्म डेटा इकट्ठा करें
+            const leadData = {
+                name: document.getElementById('custName').value,
+                mobile: document.getElementById('custMobile').value,
+                employment_type: document.getElementById('custEmployment').value,
+                monthly_income: document.getElementById('custIncome').value,
+                requested_amount: document.getElementById('loanAmount').value,
+                source: "Website Landing Page"
+            };
+
+            // -------------------------------------------------------------
+            // STEP 1: API Integration (फायर एंड फॉरगेट / Async Request)
+            // -------------------------------------------------------------
+            try {
+                // अपनी API/CRM पर डेटा भेजें
+                await fetch(API_ENDPOINT, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "Authorization": `Bearer ${API_KEY}` // आवश्यकतानुसार हटा/बदल सकते हैं
+                    },
+                    body: JSON.stringify(leadData)
+                });
+                console.log("Lead successfully submitted to API!");
+            } catch (error) {
+                // अगर API फ़ेल भी हो जाए तो भी यूजर का व्हाट्सएप अनुभव नहीं रुकेगा
+                console.error("API Integration Error:", error);
+            }
+
+            // -------------------------------------------------------------
+            // STEP 2: WhatsApp Redirect
+            // -------------------------------------------------------------
+            let message = `🔥 *New Loan Lead Inquiry* 🔥%0A%0A` +
+                          `👤 *Name:* ${leadData.name}%0A` +
+                          `📞 *Mobile:* ${leadData.mobile}%0A` +
+                          `💼 *Job Type:* ${leadData.employment_type}%0A` +
+                          `💵 *Monthly Income:* ₹${leadData.monthly_income}%0A` +
+                          `📌 *Required Amount:* ₹${leadData.requested_amount}`;
+
+            let whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
+
+            // बटन वापस रीसेट करें और व्हाट्सएप खोलें
+            submitBtn.innerText = "Submit & Continue to WhatsApp 💬";
+            submitBtn.disabled = false;
+
+            window.open(whatsappUrl, '_blank');
+        });
     </script>
 </body>
 </html>
