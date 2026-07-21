@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instant Loans up to ₹10 Lakhs | Quick Credit</title>
+    <title>Instant Credit & Loan Services | Moneyview Style</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -35,7 +35,7 @@
             overflow-x: hidden;
         }
 
-        /* Subtle Glow Effects */
+        /* Subtle Background Glows */
         .bg-glow {
             position: absolute;
             width: 350px;
@@ -49,7 +49,7 @@
         .glow-1 { top: -50px; left: -50px; }
         .glow-2 { bottom: 100px; right: -50px; }
 
-        /* Navbar */
+        /* Navigation */
         nav {
             width: 100%;
             max-width: 1200px;
@@ -82,7 +82,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            margin: 2rem 1rem 3rem;
+            margin: 1.5rem 1rem 2.5rem;
             max-width: 750px;
         }
 
@@ -107,7 +107,7 @@
         /* Features Pill Bar */
         .features-bar {
             display: flex;
-            gap: 1rem;
+            gap: 1.2rem;
             justify-content: center;
             flex-wrap: wrap;
             margin-top: 1.5rem;
@@ -125,6 +125,63 @@
             fill: var(--primary-green);
             width: 18px;
             height: 18px;
+        }
+
+        /* Categories Section */
+        .categories-container {
+            width: 100%;
+            max-width: 1100px;
+            padding: 0 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .category-title {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+        }
+
+        .cat-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .cat-card:hover, .cat-card.active {
+            border-color: var(--primary-green);
+            background: rgba(0, 230, 118, 0.08);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 230, 118, 0.15);
+        }
+
+        .cat-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .cat-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.2rem;
+        }
+
+        .cat-desc {
+            font-size: 0.75rem;
+            color: var(--text-sub);
         }
 
         /* Main App Grid */
@@ -322,6 +379,42 @@
         </div>
     </section>
 
+    <!-- Category Selector Section -->
+    <section class="categories-container">
+        <div class="category-title">Select Loan Category</div>
+        <div class="category-grid">
+            
+            <!-- Personal Loan -->
+            <div class="cat-card active" onclick="selectCategory('personal', 200000, 24, 14, this)">
+                <span class="cat-icon">👤</span>
+                <div class="cat-name">Personal Loan</div>
+                <div class="cat-desc">Up to ₹5 Lakhs</div>
+            </div>
+
+            <!-- Business Loan -->
+            <div class="cat-card" onclick="selectCategory('business', 500000, 36, 16, this)">
+                <span class="cat-icon">💼</span>
+                <div class="cat-name">Business Loan</div>
+                <div class="cat-desc">Up to ₹10 Lakhs</div>
+            </div>
+
+            <!-- Two Wheeler Loan -->
+            <div class="cat-card" onclick="selectCategory('bike', 80000, 18, 12, this)">
+                <span class="cat-icon">🛵</span>
+                <div class="cat-name">Two Wheeler</div>
+                <div class="cat-desc">Up to ₹1.5 Lakhs</div>
+            </div>
+
+            <!-- Home Design / Renovation -->
+            <div class="cat-card" onclick="selectCategory('home', 300000, 48, 11, this)">
+                <span class="cat-icon">🏠</span>
+                <div class="cat-name">Home Design</div>
+                <div class="cat-desc">Up to ₹8 Lakhs</div>
+            </div>
+
+        </div>
+    </section>
+
     <!-- App Container -->
     <div class="app-container">
 
@@ -436,7 +529,7 @@
             tenureVal.innerText = N + ' Months';
             rateVal.innerText = rateInput.value + '%';
 
-            // EMI Formula
+            // EMI Formula: [P x R x (1+R)^N]/[(1+R)^N-1]
             let emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
             let totalPayable = emi * N;
             let totalInterest = totalPayable - P;
@@ -444,6 +537,18 @@
             emiDisplay.innerText = '₹ ' + Math.round(emi).toLocaleString('en-IN');
             interestDisplay.innerText = '₹ ' + Math.round(totalInterest).toLocaleString('en-IN');
             totalDisplay.innerText = '₹ ' + Math.round(totalPayable).toLocaleString('en-IN');
+        }
+
+        // Category Selection Logic
+        function selectCategory(type, amount, tenure, rate, element) {
+            document.querySelectorAll('.cat-card').forEach(card => card.classList.remove('active'));
+            element.classList.add('active');
+
+            amountInput.value = amount;
+            tenureInput.value = tenure;
+            rateInput.value = rate;
+
+            updateEMI();
         }
 
         amountInput.addEventListener('input', updateEMI);
