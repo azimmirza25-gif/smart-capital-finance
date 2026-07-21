@@ -3,259 +3,461 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickLoan - आसान और तेज़ पर्सनल लोन</title>
+    <title>Instant Loans up to ₹10 Lakhs | Quick Credit</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 31, 49, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --primary-green: #00e676;
+            --accent-green: #00c853;
+            --text-main: #ffffff;
+            --text-sub: #94a3b8;
+            --glow-color: rgba(0, 230, 118, 0.15);
+        }
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
         }
 
         body {
-            background-color: #f4f7f6;
-            color: #333;
-            line-height: 1.6;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
         }
 
-        /* Header / Navbar */
-        header {
-            background-color: #0d6efd;
-            color: #fff;
-            padding: 1rem 5%;
+        /* Subtle Glow Effects */
+        .bg-glow {
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: var(--primary-green);
+            filter: blur(150px);
+            opacity: 0.15;
+            border-radius: 50%;
+            z-index: -1;
+        }
+        .glow-1 { top: -50px; left: -50px; }
+        .glow-2 { bottom: 100px; right: -50px; }
+
+        /* Navbar */
+        nav {
+            width: 100%;
+            max-width: 1200px;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        header h1 {
+        .logo {
             font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
-        /* Main Container */
-        .container {
+        .logo span {
+            color: var(--primary-green);
+        }
+
+        .badge {
+            background: rgba(0, 230, 118, 0.1);
+            color: var(--primary-green);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(0, 230, 118, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin: 2rem 1rem 3rem;
+            max-width: 750px;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, #00e676, #80e27e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+        }
+
+        /* Features Pill Bar */
+        .features-bar {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        .feature-item svg {
+            fill: var(--primary-green);
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Main App Grid */
+        .app-container {
+            width: 100%;
             max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1rem;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 2rem;
+            padding: 0 1.5rem;
+            margin-bottom: 4rem;
         }
 
-        @media (max-width: 768px) {
-            .container {
+        @media (max-width: 900px) {
+            .app-container {
                 grid-template-columns: 1fr;
             }
+            .hero h1 { font-size: 2.1rem; }
         }
 
-        /* Card Styling */
-        .card {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        /* Glassmorphism Cards */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: 24px;
+            padding: 2.2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .card h2 {
-            margin-bottom: 1.5rem;
-            color: #0d6efd;
-            border-bottom: 2px solid #eef2f5;
-            padding-bottom: 0.5rem;
+        .card-header {
+            margin-bottom: 1.8rem;
         }
 
-        /* Form Controls */
-        .form-group {
+        .card-header h2 {
+            font-size: 1.35rem;
+            font-weight: 700;
+        }
+
+        /* Sliders Styling */
+        .slider-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .slider-label {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+        }
+
+        .slider-value {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 5px;
+            background: #1e293b;
+            outline: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--primary-green);
+            cursor: pointer;
+            box-shadow: 0 0 15px var(--primary-green);
+            transition: transform 0.1s ease;
+        }
+
+        input[type="range"]::-webkit-slider-thumb:hover {
+            transform: scale(1.15);
+        }
+
+        /* EMI Summary Display Box */
+        .emi-summary {
+            background: rgba(0, 230, 118, 0.05);
+            border: 1px solid rgba(0, 230, 118, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .emi-amount {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-green);
+        }
+
+        /* Form Inputs */
+        .input-group {
             margin-bottom: 1.2rem;
         }
 
-        .form-group label {
+        .input-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-group input[type="range"] {
-            padding: 0;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 0.9rem;
-            background-color: #0d6efd;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #0b5ed7;
-        }
-
-        /* EMI Result Box */
-        .result-box {
-            background-color: #e7f1ff;
-            border-left: 5px solid #0d6efd;
-            padding: 1rem;
-            margin-top: 1.5rem;
-            border-radius: 4px;
-        }
-
-        .result-box div {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            background: #333;
-            color: #fff;
-            margin-top: 3rem;
             font-size: 0.85rem;
+            color: var(--text-sub);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .input-group input, .input-group select {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            outline: none;
+            transition: border 0.3s ease;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 10px rgba(0, 230, 118, 0.1);
+        }
+
+        /* Action Button */
+        .btn-glow {
+            width: 100%;
+            padding: 1.1rem;
+            background: linear-gradient(135deg, #00e676, #00c853);
+            border: none;
+            border-radius: 12px;
+            color: #000;
+            font-size: 1.05rem;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(0, 230, 118, 0.3);
+            transition: all 0.3s ease;
+            margin-top: 0.8rem;
+        }
+
+        .btn-glow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 230, 118, 0.4);
+        }
+
+        footer {
+            margin-top: auto;
+            padding: 2rem;
+            color: var(--text-sub);
+            font-size: 0.8rem;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            width: 100%;
         }
     </style>
 </head>
 <body>
 
-    <!-- Navbar -->
-    <header>
-        <h1>EasyLoan Finance</h1>
-        <span>Helpline: +91 98765 43210</span>
-    </header>
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
 
-    <div class="container">
-        
-        <!-- 1. EMI Calculator -->
-        <div class="card">
-            <h2>📊 EMI Calculator</h2>
-            
-            <div class="form-group">
-                <label for="amount">लोन राशि (₹): <span id="amountVal">2,00,000</span></label>
-                <input type="range" id="amount" min="10000" max="1000000" step="10000" value="200000">
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Quick<span>Loan</span></div>
+        <div class="badge">⚡ 100% Paperless</div>
+    </nav>
+
+    <!-- Hero Header -->
+    <section class="hero">
+        <h1>Instant Credit Up To <span>₹10,000,000</span></h1>
+        <p>बिना किसी परेशानी के सीधा आपके बैंक अकाउंट में। Instant approval 2 मिनट में!</p>
+
+        <div class="features-bar">
+            <div class="feature-item">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Low Interest Rates
+            </div>
+            <div class="feature-item">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Flexible Tenure
+            </div>
+            <div class="feature-item">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                Zero Security Required
+            </div>
+        </div>
+    </section>
+
+    <!-- App Container -->
+    <div class="app-container">
+
+        <!-- 1. Interactive EMI Calculator -->
+        <div class="glass-card">
+            <div class="card-header">
+                <h2>⚡ Loan EMI Calculator</h2>
             </div>
 
-            <div class="form-group">
-                <label for="interest">ब्याज दर (% प्रति वर्ष): <span id="interestVal">12</span>%</label>
-                <input type="range" id="interest" min="8" max="24" step="0.5" value="12">
+            <!-- Amount Slider -->
+            <div class="slider-group">
+                <div class="slider-header">
+                    <span class="slider-label">Loan Amount</span>
+                    <span class="slider-value" id="amountVal">₹ 2,00,000</span>
+                </div>
+                <input type="range" id="amount" min="20000" max="1000000" step="10000" value="200000">
             </div>
 
-            <div class="form-group">
-                <label for="tenure">अवधि (महीने): <span id="tenureVal">24</span> महीने</label>
+            <!-- Tenure Slider -->
+            <div class="slider-group">
+                <div class="slider-header">
+                    <span class="slider-label">Tenure (Months)</span>
+                    <span class="slider-value" id="tenureVal">24 Months</span>
+                </div>
                 <input type="range" id="tenure" min="6" max="60" step="6" value="24">
             </div>
 
-            <div class="result-box">
-                <div><span>प्रति माह EMI:</span> <span id="monthlyEmi">₹ 9,415</span></div>
-                <div><span>कुल ब्याज:</span> <span id="totalInterest">₹ 25,953</span></div>
-                <div><span>कुल भुगातान:</span> <span id="totalPayment">₹ 2,25,953</span></div>
+            <!-- Interest Rate Slider -->
+            <div class="slider-group">
+                <div class="slider-header">
+                    <span class="slider-label">Interest Rate (% p.a.)</span>
+                    <span class="slider-value" id="rateVal">14%</span>
+                </div>
+                <input type="range" id="rate" min="10" max="28" step="0.5" value="14">
+            </div>
+
+            <!-- Output Box -->
+            <div class="emi-summary">
+                <div>
+                    <div style="font-size: 0.85rem; color: var(--text-sub);">Monthly EMI</div>
+                    <div class="emi-amount" id="emiDisplay">₹ 9,602</div>
+                </div>
+                <div style="text-align: right; font-size: 0.85rem; color: var(--text-sub);">
+                    <div>Total Interest: <span id="interestDisplay" style="color: #fff;">₹ 30,460</span></div>
+                    <div>Total Payable: <span id="totalDisplay" style="color: #fff;">₹ 2,30,460</span></div>
+                </div>
             </div>
         </div>
 
         <!-- 2. Application Form -->
-        <div class="card">
-            <h2>📝 लोन के लिए अप्लाई करें</h2>
+        <div class="glass-card">
+            <div class="card-header">
+                <h2>📋 Check Eligibility Now</h2>
+            </div>
+
             <form id="loanForm">
-                <div class="form-group">
-                    <label for="fullName">पूरा नाम (PAN कार्ड के अनुसार)</label>
-                    <input type="text" id="fullName" placeholder="Rahul Sharma" required>
+                <div class="input-group">
+                    <label>Full Name (PAN के अनुसार)</label>
+                    <input type="text" placeholder="e.g. Rahul Sharma" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="mobile">मोबाइल नंबर</label>
-                    <input type="tel" id="mobile" placeholder="9876543210" pattern="[0-9]{10}" required>
+                <div class="input-group">
+                    <label>Mobile Number</label>
+                    <input type="tel" placeholder="10-digit mobile number" pattern="[0-9]{10}" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="employment">रोजगार का प्रकार</label>
-                    <select id="employment" required>
-                        <option value="salaried">सैलरीड (Salaried)</option>
-                        <option value="self-employed">बिजनेस / Self-Employed</option>
+                <div class="input-group">
+                    <label>Employment Type</label>
+                    <select required>
+                        <option value="salaried">Salaried Employee</option>
+                        <option value="self-employed">Self-Employed / Business Owner</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="salary">मासिक आय (Monthly Income ₹)</label>
-                    <input type="number" id="salary" placeholder="25000" required>
+                <div class="input-group">
+                    <label>Monthly Net Income (₹)</label>
+                    <input type="number" placeholder="e.g. 35000" required>
                 </div>
 
-                <button type="submit" class="btn">अभी अप्लाई करें</button>
+                <button type="submit" class="btn-glow">Get Instant Approval ➔</button>
             </form>
         </div>
 
     </div>
 
-    <!-- Footer & Disclaimer -->
+    <!-- Footer -->
     <footer>
-        <p>डिस्कलेमर: हम सीधे लोन प्रदान नहीं करते हैं। हम केवल RBI से मान्यता प्राप्त बैंकों और NBFCs के साथ लीड्स शेयर करते हैं।</p>
-        <p>© 2026 EasyLoan Finance. All rights reserved.</p>
+        <p>Disclaimer: EasyLoan is an aggregator platform. We do not directly provide loans. All loans are disbursed by RBI registered NBFCs & Banks.</p>
+        <p style="margin-top: 5px;">© 2026 EasyLoan Technologies Ltd. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript for Logic -->
+    <!-- Interactive Script -->
     <script>
-        // DOM Elements
         const amountInput = document.getElementById('amount');
-        const interestInput = document.getElementById('interest');
         const tenureInput = document.getElementById('tenure');
+        const rateInput = document.getElementById('rate');
 
         const amountVal = document.getElementById('amountVal');
-        const interestVal = document.getElementById('interestVal');
         const tenureVal = document.getElementById('tenureVal');
+        const rateVal = document.getElementById('rateVal');
 
-        const monthlyEmi = document.getElementById('monthlyEmi');
-        const totalInterest = document.getElementById('totalInterest');
-        const totalPayment = document.getElementById('totalPayment');
+        const emiDisplay = document.getElementById('emiDisplay');
+        const interestDisplay = document.getElementById('interestDisplay');
+        const totalDisplay = document.getElementById('totalDisplay');
 
-        // Calculate EMI Function
-        function calculateEMI() {
-            let p = parseFloat(amountInput.value);
-            let r = parseFloat(interestInput.value) / 12 / 100;
-            let n = parseFloat(tenureInput.value);
+        function updateEMI() {
+            let P = parseFloat(amountInput.value);
+            let N = parseFloat(tenureInput.value);
+            let R = parseFloat(rateInput.value) / 12 / 100;
 
-            // Display Values
-            amountVal.innerText = p.toLocaleString('en-IN');
-            interestVal.innerText = interestInput.value;
-            tenureVal.innerText = n;
+            amountVal.innerText = '₹ ' + P.toLocaleString('en-IN');
+            tenureVal.innerText = N + ' Months';
+            rateVal.innerText = rateInput.value + '%';
 
-            // EMI Formula: [P x R x (1+R)^N]/[(1+R)^N-1]
-            let emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-            let totalPayable = emi * n;
-            let totalInt = totalPayable - p;
+            // EMI Formula
+            let emi = (P * R * Math.pow(1 + R, N)) / (Math.pow(1 + R, N) - 1);
+            let totalPayable = emi * N;
+            let totalInterest = totalPayable - P;
 
-            monthlyEmi.innerText = "₹ " + Math.round(emi).toLocaleString('en-IN');
-            totalInterest.innerText = "₹ " + Math.round(totalInt).toLocaleString('en-IN');
-            totalPayment.innerText = "₹ " + Math.round(totalPayable).toLocaleString('en-IN');
+            emiDisplay.innerText = '₹ ' + Math.round(emi).toLocaleString('en-IN');
+            interestDisplay.innerText = '₹ ' + Math.round(totalInterest).toLocaleString('en-IN');
+            totalDisplay.innerText = '₹ ' + Math.round(totalPayable).toLocaleString('en-IN');
         }
 
-        // Event Listeners for Sliders
-        amountInput.addEventListener('input', calculateEMI);
-        interestInput.addEventListener('input', calculateEMI);
-        tenureInput.addEventListener('input', calculateEMI);
+        amountInput.addEventListener('input', updateEMI);
+        tenureInput.addEventListener('input', updateEMI);
+        rateInput.addEventListener('input', updateEMI);
 
-        // Form Submission Logic
         document.getElementById('loanForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('धन्यवाद! आपकी लोन एप्लीकेशन सबमिट हो गई है। हमारी टीम जल्द ही आपसे संपर्क करेगी।');
+            alert('🎉 Congratulations! You are eligible for an instant loan. Our team will verify your details shortly.');
             this.reset();
         });
 
-        // Initial Calculation
-        calculateEMI();
+        // Initialize Calculator
+        updateEMI();
     </script>
 </body>
 </html>
