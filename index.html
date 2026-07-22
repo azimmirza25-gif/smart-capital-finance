@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instant Personal Loan - Quick & Easy Approval</title>
+  <title>Instant Personal Loan - Quick Approval</title>
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Inter', sans-serif; }
   </style>
@@ -18,11 +18,10 @@
   <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <div class="flex items-center space-x-2">
-        <span class="text-2xl font-bold text-blue-600">FlexiLoan</span>
+        <span class="text-2xl font-extrabold text-blue-600">FlexiLoan</span>
         <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full font-medium">Fast Disbursal</span>
       </div>
       <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-        <a href="#features" class="hover:text-blue-600 transition">Features</a>
         <a href="#calculator" class="hover:text-blue-600 transition">EMI Calculator</a>
         <a href="#apply" class="hover:text-blue-600 transition">Apply Now</a>
       </nav>
@@ -32,7 +31,7 @@
     </div>
   </header>
 
-  <!-- Hero Section with Form -->
+  <!-- Hero Section with WhatsApp Form -->
   <section class="py-12 md:py-20 bg-gradient-to-b from-blue-50 to-slate-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
       
@@ -59,37 +58,39 @@
         </div>
       </div>
 
-      <!-- Right Lead Form -->
+      <!-- Right Lead Form (WhatsApp Integrated) -->
       <div id="apply" class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-100">
         <h2 class="text-2xl font-bold text-slate-900 mb-1">Check Loan Eligibility</h2>
-        <p class="text-sm text-slate-500 mb-6">Takes less than 2 minutes</p>
+        <p class="text-sm text-slate-500 mb-6">WhatsApp par instant updates paayein</p>
 
-        <form id="loanForm" class="space-y-4" onsubmit="handleFormSubmit(event)">
+        <form id="loanForm" class="space-y-4" onsubmit="sendToWhatsApp(event)">
           <div>
             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Full Name</label>
-            <input type="text" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <input type="text" id="userName" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Mobile Number</label>
-            <input type="tel" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <input type="tel" id="userPhone" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Monthly Income (₹)</label>
-            <input type="number" required placeholder="e.g. 35000" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+            <input type="number" id="userIncome" required placeholder="e.g. 35000" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
           </div>
 
           <div>
             <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Employment Type</label>
-            <select class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-              <option value="salaried">Salaried</option>
-              <option value="self-employed">Self Employed / Business</option>
+            <select id="userEmp" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
+              <option value="Salaried">Salaried</option>
+              <option value="Self Employed / Business">Self Employed / Business</option>
             </select>
           </div>
 
-          <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow-lg hover:shadow-blue-500/25 transition">
-            Get Instant Offer →
+          <!-- WhatsApp Submit Button -->
+          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-lg shadow-lg hover:shadow-green-500/25 transition flex items-center justify-center gap-2 text-base">
+            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+            <span>Apply via WhatsApp</span>
           </button>
         </form>
       </div>
@@ -97,7 +98,7 @@
     </div>
   </section>
 
-  <!-- Interactive EMI Calculator -->
+  <!-- Interactive EMI Calculator Section -->
   <section id="calculator" class="py-16 bg-white border-y border-slate-200">
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-10">
@@ -154,8 +155,34 @@
     </div>
   </section>
 
-  <!-- JavaScript for Calculator -->
+  <!-- JavaScript Code -->
   <script>
+    // 1. WHATSAPP REDIRECT LOGIC
+    function sendToWhatsApp(e) {
+      e.preventDefault();
+
+      // ==========================================
+      // YAHAN APNA 10-DIGIT MOBILE NUMBER DALEIN:
+      const mobileNumber = "9876543210"; 
+      // ==========================================
+
+      const name = document.getElementById('userName').value;
+      const phone = document.getElementById('userPhone').value;
+      const income = document.getElementById('userIncome').value;
+      const empType = document.getElementById('userEmp').value;
+
+      const textMessage = `*New Loan Application Details:*%0A` +
+                          `• *Name:* ${encodeURIComponent(name)}%0A` +
+                          `• *Phone:* ${encodeURIComponent(phone)}%0A` +
+                          `• *Monthly Income:* ₹${encodeURIComponent(income)}%0A` +
+                          `• *Employment:* ${encodeURIComponent(empType)}`;
+
+      const finalUrl = `https://api.whatsapp.com/send?phone=91${mobileNumber}&text=${textMessage}`;
+      
+      window.open(finalUrl, '_blank');
+    }
+
+    // 2. EMI CALCULATOR LOGIC
     function calculateEMI() {
       const p = parseFloat(document.getElementById('amount').value);
       const n = parseInt(document.getElementById('tenure').value);
@@ -165,7 +192,6 @@
       document.getElementById('tenureVal').innerText = n;
       document.getElementById('rateVal').innerText = document.getElementById('rate').value;
 
-      // EMI Formula: P * r * (1 + r)^n / ((1 + r)^n - 1)
       const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
       const totalPayable = emi * n;
       const totalInterest = totalPayable - p;
@@ -175,90 +201,8 @@
       document.getElementById('totalPayable').innerText = Math.round(totalPayable).toLocaleString('en-IN');
     }
 
-    function handleFormSubmit(e) {
-      e.preventDefault();
-      alert('Form submitted successfully! We will contact you shortly.');
-    }
-
-    // Initial Calculation
+    // Run initial calculation on page load
     calculateEMI();
   </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Loan Eligibility - WhatsApp Connect</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body class="bg-slate-100 p-6 flex justify-center items-center min-h-screen">
-
-  <!-- Form Container -->
-  <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md border border-slate-200">
-    <h2 class="text-2xl font-bold text-slate-800 mb-1">Check Loan Eligibility</h2>
-    <p class="text-sm text-slate-500 mb-6">WhatsApp par instant response payein</p>
-
-    <form id="loanForm" class="space-y-4" onsubmit="sendToWhatsApp(event)">
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Full Name</label>
-        <input type="text" id="userName" required placeholder="Apna naam likhein" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-      </div>
-
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Mobile Number</label>
-        <input type="tel" id="userPhone" required pattern="[0-9]{10}" placeholder="10 digit number" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-      </div>
-
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Monthly Income (₹)</label>
-        <input type="number" id="userIncome" required placeholder="e.g. 35000" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-      </div>
-
-      <div>
-        <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Employment Type</label>
-        <select id="userEmp" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-          <option value="Salaried">Salaried</option>
-          <option value="Self Employed / Business">Self Employed / Business</option>
-        </select>
-      </div>
-
-      <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-lg shadow-lg transition flex items-center justify-center gap-2">
-        <span>Apply via WhatsApp</span>
-        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-      </button>
-    </form>
-  </div>
-
-  <script>
-    function sendToWhatsApp(e) {
-      // 1. Form ko page refresh karne se rokein
-      e.preventDefault();
-
-      // 2. YAHAN APNA 10-DIGIT WHATSAPP NUMBER DALIN (Bina +91 ya 0 ke)
-      const mobileNumber = "9876543210"; // <-- Replace this with your number
-
-      // 3. Values extract karein
-      const name = document.getElementById('userName').value;
-      const phone = document.getElementById('userPhone').value;
-      const income = document.getElementById('userIncome').value;
-      const empType = document.getElementById('userEmp').value;
-
-      // 4. Message format banayein
-      const textMessage = `*New Loan Application Details:*%0A` +
-                          `• *Name:* ${encodeURIComponent(name)}%0A` +
-                          `• *Phone:* ${encodeURIComponent(phone)}%0A` +
-                          `• *Monthly Income:* ₹${encodeURIComponent(income)}%0A` +
-                          `• *Employment:* ${encodeURIComponent(empType)}`;
-
-      // 5. Direct WhatsApp Web / App URL
-      const finalUrl = `https://api.whatsapp.com/send?phone=91${6309321325}&text=${textMessage}`;
-
-      // 6. WhatsApp open karein
-      window.open(finalUrl, '_blank');
-    }
-  </script>
-
 </body>
 </html>
