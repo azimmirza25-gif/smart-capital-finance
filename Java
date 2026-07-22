@@ -1,0 +1,25 @@
+function handleFormSubmit(e) {
+  e.preventDefault();
+
+  // 1. Form values collect karein
+  const name = e.target.querySelector('input[type="text"]').value;
+  const phone = e.target.querySelector('input[type="tel"]').value;
+  const income = e.target.querySelector('input[type="number"]').value;
+  const employment = e.target.querySelector('select').value;
+
+  // 2. Aapka WhatsApp Number (Country Code ke saath, bina + sign ke)
+  const myWhatsAppNumber = "919876543210"; // <-- Yahan apna 10 digit number dalein
+
+  // 3. Automated Message Format
+  const message = `Hi! New Loan Lead Details:
+• Name: ${name}
+• Phone: ${phone}
+• Monthly Income: ₹${income}
+• Type: ${employment}`;
+
+  // 4. WhatsApp URL encode aur redirect
+  const whatsappUrl = `https://wa.me/${6309321325}?text=${encodeURIComponent(message)}`;
+  
+  // New tab me open karne ke liye
+  window.open(whatsappUrl, '_blank');
+}
