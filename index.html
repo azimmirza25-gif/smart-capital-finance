@@ -50,9 +50,16 @@
         /* Inputs */
         .input-group { margin-bottom: 20px; }
         .input-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 14px; color: var(--primary); }
-        .input-group input, .input-group select { width: 100%; padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; background: #f8fafc; }
+        .input-group input[type="text"], .input-group input[type="number"], .input-group select { width: 100%; padding: 15px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 15px; outline: none; transition: 0.3s; background: #f8fafc; }
         .input-group input:focus, .input-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(0, 208, 156, 0.2); }
         
+        /* Dummy File Upload Styling */
+        .file-upload { border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; text-align: center; position: relative; cursor: pointer; transition: 0.3s; background: #f8fafc; margin-top: 10px; }
+        .file-upload:hover { border-color: var(--accent); background: #f0fdfa; }
+        .file-upload input[type="file"] { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
+        .file-upload i { font-size: 28px; color: var(--accent); margin-bottom: 10px; }
+        .file-upload p { margin: 0; font-size: 14px; color: var(--text-muted); font-weight: 500; transition: 0.3s; }
+
         .result-box { background: var(--bg-light); padding: 20px; border-radius: 8px; text-align: center; margin-bottom: 20px; }
         .result-box h4 { color: var(--text-muted); font-size: 14px; text-transform: uppercase; }
         .result-box h2 { color: var(--primary); font-size: 32px; }
@@ -60,7 +67,7 @@
         .btn-submit { width: 100%; padding: 16px; background: #25D366; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 10px; transition: 0.3s; }
         .btn-submit:hover { background: #1ebd5a; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); }
 
-        /* Floating WhatsApp Button with Pulse */
+        /* Floating WhatsApp Button */
         .wa-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 100; text-decoration: none; animation: pulse 2s infinite; }
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
@@ -88,14 +95,14 @@
     <!-- Hero Section -->
     <section class="hero">
         <h1>Smart Finance for <span>Smarter Goals</span></h1>
-        <p>Instant approvals, minimal paperwork, and transparent interest rates. Apni financial needs ko aaj hi pura karein.Insatnt Consumer Loans Se Cash Convert Karte Intersted People Please DM Me.</p>
+        <p>Instant approvals, minimal paperwork, and transparent interest rates. Apni financial needs ko aaj hi pura karein.</p>
     </section>
 
     <!-- Stats -->
     <div class="stats">
         <div class="stat-box">
             <i class="fa-solid fa-bolt"></i>
-            <h4>Instant</h4>
+            <h4>24 Hrs</h4>
             <p>Approval Time</p>
         </div>
         <div class="stat-box">
@@ -105,7 +112,7 @@
         </div>
         <div class="stat-box">
             <i class="fa-solid fa-percent"></i>
-            <h4>Bank</h4>
+            <h4>Lowest</h4>
             <p>Interest Rates</p>
         </div>
     </div>
@@ -126,7 +133,6 @@
             </div>
             <div class="input-group">
                 <label>Tenure (Months)</label>
-                <!-- Default is 24 months -->
                 <input type="number" id="calcTenure" value="24" oninput="calculateEMI()">
             </div>
             <div class="result-box">
@@ -135,7 +141,7 @@
             </div>
         </div>
 
-        <!-- WhatsApp Application Form -->
+        <!-- WhatsApp Application Form with Document Upload -->
         <div class="card">
             <h3><i class="fa-brands fa-whatsapp"></i> Apply via WhatsApp</h3>
             <form id="loanForm">
@@ -147,14 +153,25 @@
                     <label>Loan Type</label>
                     <select id="waService">
                         <option value="Personal Loan">Personal Loan</option>
-                        <option value="Idfc Consumer Card Convert To Cash">Idfc Consumer Card Convert To Cash</option>
-                        <option value="Bajaj Consumer Card Convert To Cash">Bajaj Consumer Card Convert To Cash</option>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="Business Loan">Business Loan</option>
                     </select>
                 </div>
                 <div class="input-group">
                     <label>Required Amount (₹)</label>
                     <input type="number" id="waAmount" placeholder="e.g. 50000">
                 </div>
+                
+                <!-- Dummy Document Upload UI -->
+                <div class="input-group">
+                    <label>Documents (PAN & Aadhaar)</label>
+                    <div class="file-upload">
+                        <input type="file" id="waDocs" multiple accept=".pdf, image/*" onchange="updateFileName(this)">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <p id="fileText">Tap to select documents</p>
+                    </div>
+                </div>
+
                 <button type="button" class="btn-submit" onclick="sendToWA()">
                     <i class="fa-brands fa-whatsapp" style="font-size: 20px;"></i> Send Application
                 </button>
@@ -163,7 +180,7 @@
     </section>
 
     <!-- Floating WhatsApp Icon -->
-    <a href="https://wa.me/916309321325?text=Hi%20Smart%20Capital,%20I%20need%20assistance." class="wa-float" target="_blank">
+    <a href="https://wa.me/919876543210?text=Hi%20Smart%20Capital,%20I%20need%20assistance." class="wa-float" target="_blank">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -187,15 +204,30 @@
             }
         }
 
+        // Update File Name in UI when selected
+        function updateFileName(input) {
+            let text = document.getElementById('fileText');
+            if(input.files.length > 0) {
+                text.innerText = input.files.length + " document(s) ready for WhatsApp";
+                text.style.color = "#00D09C"; // Green text on selection
+                text.style.fontWeight = "bold";
+            } else {
+                text.innerText = "Tap to select documents";
+                text.style.color = "#8898AA";
+                text.style.fontWeight = "500";
+            }
+        }
+
         // WhatsApp Sending Logic
         function sendToWA() {
-            let number = "916309321325"; // Replace with your WhatsApp Number
+            let number = "919876543210"; // YAHAN APNA NUMBER DALEIN
             let name = document.getElementById('waName').value;
             let service = document.getElementById('waService').value;
             let amount = document.getElementById('waAmount').value;
+            let docs = document.getElementById('waDocs').files.length;
             
             if(!name) {
-                alert("Please enter your name.");
+                alert("Please apna naam bharein.");
                 return;
             }
 
@@ -203,7 +235,13 @@
             msg += `*Name:* ${name}%0A`;
             msg += `*Service:* ${service}%0A`;
             if(amount) msg += `*Amount:* ₹${amount}%0A`;
-            msg += `%0AI want to proceed with this application.`;
+            
+            // Smartly reminding them to attach the files in chat
+            if(docs > 0) {
+                msg += `%0A*Documents:* Maine apne PAN/Aadhaar ready kar liye hain, main is chat mein attach kar raha hu.%0A`;
+            } else {
+                msg += `%0A*Note:* Kripya apne PAN aur Aadhaar ki photo is chat mein attach karein.%0A`;
+            }
 
             window.open(`https://wa.me/${number}?text=${msg}`, '_blank');
         }
