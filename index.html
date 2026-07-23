@@ -1,307 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instant Personal Loan - Quick Approval</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-  </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
-
-  <!-- Header / Navbar -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-2">
-        <span class="text-2xl font-extrabold text-blue-600">FlexiLoan</span>
-        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-0.5 rounded-full font-medium">Fast Disbursal</span>
-      </div>
-      <nav class="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-        <a href="#calculator" class="hover:text-blue-600 transition">EMI Calculator</a>
-        <a href="#apply" class="hover:text-blue-600 transition">Apply Now</a>
-      </nav>
-      <a href="#apply" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition">
-        Check Eligibility
-      </a>
-    </div>
-  </header>
-
-  <!-- Hero Section with WhatsApp Form -->
-  <section class="py-12 md:py-20 bg-gradient-to-b from-blue-50 to-slate-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 items-center">
-      
-      <!-- Left Hero Content -->
-      <div>
-        <span class="text-blue-600 font-semibold text-sm tracking-wide uppercase">100% Digital Process</span>
-        <h1 class="text-4xl sm:text-5xl font-extrabold text-slate-900 mt-2 leading-tight">
-          Instant Personal Loans up to <span class="text-blue-600">₹5,00,000</span>
-        </h1>
-        <p class="mt-4 text-lg text-slate-600">
-          Get quick approval with minimal documentation and attractive interest rates starting from 10.99% p.a.
-        </p>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Capital Finance | Instant Personal Loans & Credit</title>
+    <style>
+        /* General Styles */
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; }
+        header { background: #004080; color: white; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        header h1 { margin: 0; font-size: 28px; letter-spacing: 1px; }
         
-        <!-- Key Highlights -->
-        <div class="mt-8 grid grid-cols-2 gap-4">
-          <div class="p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-            <p class="text-xs text-slate-500 font-medium">Low Interest Rate</p>
-            <p class="text-lg font-bold text-slate-800 mt-1">Starting @ 12.99%</p>
-          </div>
-          <div class="p-4 bg-white rounded-xl shadow-sm border border-slate-100">
-            <p class="text-xs text-slate-500 font-medium">Flexible Tenure</p>
-            <p class="text-lg font-bold text-slate-800 mt-1">12 - 60 Months</p>
-          </div>
+        /* Hero Section */
+        .hero { text-align: center; padding: 60px 20px; background: linear-gradient(135deg, #e6f2ff 0%, #ffffff 100%); }
+        .hero h2 { color: #004080; font-size: 32px; margin-bottom: 10px; }
+        .hero p { font-size: 18px; color: #555; margin-bottom: 20px; }
+        
+        /* Services Section */
+        .services { display: flex; justify-content: center; gap: 30px; padding: 50px 20px; flex-wrap: wrap; }
+        .service-card { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); width: 280px; text-align: center; border-top: 4px solid #004080; transition: transform 0.3s; }
+        .service-card:hover { transform: translateY(-5px); }
+        .service-card h3 { color: #004080; }
+        
+        /* Contact Form Section */
+        .contact-section { background: white; max-width: 500px; margin: 0 auto 60px; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+        .contact-section h2 { text-align: center; color: #004080; margin-top: 0; }
+        input, select, textarea { width: 100%; padding: 12px; margin: 10px 0 20px 0; border: 1px solid #ddd; border-radius: 5px; box-sizing: border-box; font-family: inherit; }
+        button { width: 100%; padding: 15px; background: #25D366; color: white; border: none; border-radius: 5px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.3s; }
+        button:hover { background: #1ebd5a; }
+        
+        /* Floating WhatsApp Button */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; border-radius: 50px; padding: 15px 25px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.4); z-index: 1000; display: flex; align-items: center; gap: 10px; transition: transform 0.3s; }
+        .whatsapp-float:hover { transform: scale(1.05); }
+        
+        /* Footer */
+        footer { background: #222; color: white; text-align: center; padding: 20px; font-size: 14px; }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Smart Capital Finance</h1>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Aapke Sapno Ko De Nayi Udaan</h2>
+        <p>Fast processing aur minimal documentation ke saath instantly funds access karein.</p>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="service-card">
+            <h3>Instant Personal Loans</h3>
+            <p>Bina kisi jhanjhat ke apne personal kharchon ke liye turant loan paayein. Competitive interest rates aur flexible 24-month EMI options.</p>
         </div>
-      </div>
+        <div class="service-card">
+            <h3>Credit Card Assistance</h3>
+            <p>Apni profile aur CIBIL score ke hisaab se best credit card chunein. Quick approval aur premium benefits.</p>
+        </div>
+        <div class="service-card">
+            <h3>Business Loans</h3>
+            <p>Apne business ko grow karne ke liye working capital haasil karein. Easy repayment structure.</p>
+        </div>
+    </section>
 
-      <!-- Right Lead Form (WhatsApp Integrated) -->
-      <div id="apply" class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-100">
-        <h2 class="text-2xl font-bold text-slate-900 mb-1">Check Loan Eligibility</h2>
-        <p class="text-sm text-slate-500 mb-6">WhatsApp par instant updates paayein</p>
+    <!-- WhatsApp Form -->
+    <section class="contact-section">
+        <h2>Apply Now</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 20px;">Details bharein aur humaari team WhatsApp par aapse connect karegi.</p>
+        
+        <form id="loanForm">
+            <label for="name">Aapka Naam</label>
+            <input type="text" id="name" placeholder="Full Name" required>
 
-        <form id="loanForm" class="space-y-4" onsubmit="sendToWhatsApp(event)">
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Full Name</label>
-            <input type="text" id="userName" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Mobile Number</label>
-            <input type="tel" id="userPhone" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Monthly Income (₹)</label>
-            <input type="number" id="userIncome" required placeholder="e.g. 35000" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Employment Type</label>
-            <select id="userEmp" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-              <option value="Salaried">Salaried</option>
-              <option value="Self Employed / Business">Self Employed / Business</option>
+            <label for="service">Service Chunein</label>
+            <select id="service" required>
+                <option value="Personal Loan">Personal Loan</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Business Loan">Business Loan</option>
             </select>
-          </div>
 
-          <!-- WhatsApp Submit Button -->
-          <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-lg shadow-lg hover:shadow-green-500/25 transition flex items-center justify-center gap-2 text-base">
-            <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-            <span>Apply via WhatsApp</span>
-          </button>
+            <label for="amount">Loan Amount (₹)</label>
+            <input type="number" id="amount" placeholder="e.g. 50000">
+
+            <button type="button" onclick="sendToWhatsApp()">Submit on WhatsApp</button>
         </form>
-      </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/919876543210?text=Hello%20Smart%20Capital%20Finance,%20I%20want%20to%20know%20more%20about%20your%20services." class="whatsapp-float" target="_blank">
+        Chat with Us
+    </a>
 
-  <!-- Interactive EMI Calculator Section -->
-  <section id="calculator" class="py-16 bg-white border-y border-slate-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="text-3xl font-bold text-slate-900">Interactive EMI Calculator</h2>
-        <p class="text-slate-600 mt-2">Apne budget ke hisaab se monthly EMI calculate karein</p>
-      </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Smart Capital Finance. All Rights Reserved.</p>
+    </footer>
 
-      <div class="bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 grid md:grid-cols-2 gap-8 items-center">
-        
-        <!-- Controls -->
-        <div class="space-y-6">
-          <div>
-            <div class="flex justify-between mb-2 text-sm font-semibold">
-              <span>Loan Amount</span>
-              <span class="text-blue-600">₹<span id="amountVal">200000</span></span>
-            </div>
-            <input type="range" id="amount" min="20000" max="1000000" step="10000" value="200000" class="w-full accent-blue-600 cursor-pointer" oninput="calculateEMI()" />
-          </div>
+    <!-- JavaScript for Form to WhatsApp -->
+    <script>
+        function sendToWhatsApp() {
+            // Apna WhatsApp number yahan dalein (Country code ke saath, bina + sign ke)
+            let phoneNumber = "919876543210"; 
 
-          <div>
-            <div class="flex justify-between mb-2 text-sm font-semibold">
-              <span>Tenure (Months)</span>
-              <span class="text-blue-600"><span id="tenureVal">24</span> Months</span>
-            </div>
-            <input type="range" id="tenure" min="6" max="60" step="6" value="24" class="w-full accent-blue-600 cursor-pointer" oninput="calculateEMI()" />
-          </div>
+            let name = document.getElementById("name").value;
+            let service = document.getElementById("service").value;
+            let amount = document.getElementById("amount").value;
 
-          <div>
-            <div class="flex justify-between mb-2 text-sm font-semibold">
-              <span>Interest Rate (% p.a.)</span>
-              <span class="text-blue-600"><span id="rateVal">12</span>%</span>
-            </div>
-            <input type="range" id="rate" min="10" max="24" step="0.5" value="12" class="w-full accent-blue-600 cursor-pointer" oninput="calculateEMI()" />
-          </div>
-        </div>
+            if(name === "") {
+                alert("Please apna naam bharein!");
+                return;
+            }
 
-        <!-- Output Card -->
-        <div class="bg-blue-600 text-white p-6 rounded-xl text-center space-y-4">
-          <p class="text-sm uppercase tracking-wider text-blue-100 font-medium">Estimated Monthly EMI</p>
-          <p class="text-4xl font-extrabold">₹<span id="emiResult">0</span></p>
-          <div class="pt-4 border-t border-blue-400/50 flex justify-around text-xs text-blue-100">
-            <div>
-              <p>Total Interest</p>
-              <p class="font-bold text-sm text-white mt-0.5">₹<span id="totalInterest">0</span></p>
-            </div>
-            <div>
-              <p>Total Payable</p>
-              <p class="font-bold text-sm text-white mt-0.5">₹<span id="totalPayable">0</span></p>
-            </div>
-          </div>
-        </div>
+            // WhatsApp ke liye message format karna
+            let message = "Hello Smart Capital Finance, meri application details ye hain:%0A%0A";
+            message += "*Name:* " + name + "%0A";
+            message += "*Interested In:* " + service + "%0A";
+            
+            if(amount !== "") {
+                message += "*Amount Required:* ₹" + amount + "%0A";
+            }
+            
+            message += "%0AKripya mujhe guide karein.";
 
-      </div>
-    </div>
-  </section>
+            // WhatsApp link generate karke open karna
+            let whatsappURL = "https://wa.me/" + phoneNumber + "?text=" + message;
+            window.open(whatsappURL, '_blank');
+        }
+    </script>
 
-  <!-- JavaScript Code -->
-  <script>
-    // 1. WHATSAPP REDIRECT LOGIC
-    function sendToWhatsApp(e) {
-      e.preventDefault();
-
-      // ==========================================
-      // YAHAN APNA 10-DIGIT MOBILE NUMBER DALEIN:
-      const mobileNumber = "9876543210"; 
-      // ==========================================
-
-      const name = document.getElementById('userName').value;
-      const phone = document.getElementById('userPhone').value;
-      const income = document.getElementById('userIncome').value;
-      const empType = document.getElementById('userEmp').value;
-
-      const textMessage = `*New Loan Application Details:*%0A` +
-                          `• *Name:* ${encodeURIComponent(name)}%0A` +
-                          `• *Phone:* ${encodeURIComponent(phone)}%0A` +
-                          `• *Monthly Income:* ₹${encodeURIComponent(income)}%0A` +
-                          `• *Employment:* ${encodeURIComponent(empType)}`;
-
-      const finalUrl = `https://api.whatsapp.com/send?phone=91${mobileNumber}&text=${textMessage}`;
-      
-      window.open(finalUrl, '_blank');
-    }
-
-    // 2. EMI CALCULATOR LOGIC
-    function calculateEMI() {
-      const p = parseFloat(document.getElementById('amount').value);
-      const n = parseInt(document.getElementById('tenure').value);
-      const r = parseFloat(document.getElementById('rate').value) / 12 / 100;
-
-      document.getElementById('amountVal').innerText = p.toLocaleString('en-IN');
-      document.getElementById('tenureVal').innerText = n;
-      document.getElementById('rateVal').innerText = document.getElementById('rate').value;
-
-      const emi = (p * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
-      const totalPayable = emi * n;
-      const totalInterest = totalPayable - p;
-
-      document.getElementById('emiResult').innerText = Math.round(emi).toLocaleString('en-IN');
-      document.getElementById('totalInterest').innerText = Math.round(totalInterest).toLocaleString('en-IN');
-      document.getElementById('totalPayable').innerText = Math.round(totalPayable).toLocaleString('en-IN');
-    }
-
-    // Run initial calculation on page load
-    calculateEMI();
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Instant Loan & CIBIL Check</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <style> body { font-family: 'Inter', sans-serif; } </style>
-</head>
-<body class="bg-slate-50 text-slate-800">
-
-  <!-- Header -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 h-16 flex items-center justify-between">
-      <span class="text-2xl font-extrabold text-blue-600">FlexiLoan</span>
-      <span class="bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded-full font-semibold">100% Secure</span>
-    </div>
-  </header>
-
-  <!-- Form Section -->
-  <section class="py-10 max-w-lg mx-auto px-4">
-    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-100">
-      <h2 class="text-2xl font-bold text-slate-900 mb-1">Check Loan & Eligibility</h2>
-      <p class="text-sm text-slate-500 mb-6">Apni details bharein aur instant offer WhatsApp par paayein.</p>
-
-      <form id="loanForm" class="space-y-4" onsubmit="submitToWhatsApp(event)">
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Full Name (As per PAN)</label>
-          <input type="text" id="userName" required placeholder="John Doe" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">PAN Card Number</label>
-          <input type="text" id="userPan" required maxlength="10" placeholder="ABCDE1234F" class="w-full px-4 py-2.5 uppercase tracking-wider rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Mobile Number</label>
-          <input type="tel" id="userPhone" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Monthly Income (₹)</label>
-          <input type="number" id="userIncome" required placeholder="e.g. 40000" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold text-slate-700 uppercase mb-1">Estimated CIBIL Score</label>
-          <select id="userCibil" class="w-full px-4 py-2.5 rounded-lg border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
-            <option value="750+ (Excellent)">750+ (Excellent)</option>
-            <option value="700 - 750 (Good)">700 - 750 (Good)</option>
-            <option value="650 - 700 (Average)">650 - 700 (Average)</option>
-            <option value="Below 650 / No History">Below 650 / No History</option>
-          </select>
-        </div>
-
-        <!-- Terms checkbox -->
-        <div class="flex items-start gap-2 pt-1">
-          <input type="checkbox" id="terms" required class="mt-1 accent-blue-600" />
-          <label for="terms" class="text-xs text-slate-500">I authorize this platform to check my details and contact me via WhatsApp/Call.</label>
-        </div>
-
-        <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-lg shadow-lg transition flex items-center justify-center gap-2 text-base">
-          <span>Get Offer on WhatsApp</span>
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <script>
-    function submitToWhatsApp(e) {
-      e.preventDefault();
-
-      // ==========================================
-      // APNA 10-DIGIT WHATSAPP NUMBER YAHAN DALEIN:
-      const myWhatsAppNumber = "9876543210";
-      // ==========================================
-
-      const name = document.getElementById('userName').value;
-      const pan = document.getElementById('userPan').value.toUpperCase();
-      const phone = document.getElementById('userPhone').value;
-      const income = document.getElementById('userIncome').value;
-      const cibil = document.getElementById('userCibil').value;
-
-      // WhatsApp Message Format
-      const message = `*New Loan Application Lead:*%0A` +
-                      `• *Name:* ${encodeURIComponent(name)}%0A` +
-                      `• *PAN:* ${encodeURIComponent(pan)}%0A` +
-                      `• *Phone:* ${encodeURIComponent(phone)}%0A` +
-                      `• *Income:* ₹${encodeURIComponent(income)}%0A` +
-                      `• *Est. CIBIL:* ${encodeURIComponent(cibil)}`;
-
-      const url = `https://api.whatsapp.com/send?phone=91${myWhatsAppNumber}&text=${message}`;
-      window.open(url, '_blank');
-    }
-  </script>
 </body>
 </html>
